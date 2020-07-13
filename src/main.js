@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
+import './assets/js/screen.js'
 Vue.use(Vant);
 Vue.config.productionTip = false
 
@@ -18,3 +18,12 @@ new Vue({
   },
   template: '<App/>'
 })
+
+router.beforeEach((to, from, next) => {
+
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  next()
+});
