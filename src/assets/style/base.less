@@ -1,0 +1,144 @@
+@import './basic.less';
+
+.van-nav-bar {
+    height: .44rem;
+    background: @blue-color;
+
+    .van-nav-bar__title {
+        color: @white;
+        font-size: .18rem;
+    }
+
+    .icon {
+        display: inline-block;
+        width: .32rem;
+        height: .32rem;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+    }
+
+    .back {
+        background-image: url(../images/Icon/ic_nav_back.png);
+    }
+
+    .add {
+        background-image: url(../images/Icon/ic_nav_add.png);
+    }
+}
+
+.main-menu {
+    height: 1.04rem;
+
+
+    a {
+        font-size: 0;
+        display: flex;
+        height: 1.04rem;
+        justify-content: center;
+        align-items: center;
+
+        .block {
+            text-align: center;
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        width: .48rem;
+        height: .48rem;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+        margin-bottom: .04rem;
+
+    }
+
+    .menu {
+        font-size: .14rem;
+        color: @font-grey3;
+        margin: 0px;
+    }
+
+    .menu-icon1 {
+        background-image: url(../images/Icon/ic_home_sales_task.png);
+    }
+
+    .menu-icon2 {
+        background-image: url(../images/Icon/ic_home_client.png);
+    }
+
+    .menu-icon3 {
+        background-image: url(../images/Icon/ic_home_approval_process.png);
+    }
+
+    .menu-icon4 {
+        background-image: url(../images/Icon/ic_home_report.png);
+    }
+}
+
+.main-tab {
+    .van-tab {
+        -webkit-align-items: start;
+        align-items: start;
+    }
+
+    .van-tabs__wrap,
+    .van-tabs__nav--line {
+        height: .56rem;
+        background: @bg-grey;
+        overflow: hidden;
+
+    }
+
+    .van-tab__text {
+        font-size: 12px;
+        width: 48px;
+        overflow: auto;
+        -webkit-line-clamp: unset;
+        text-align: center;
+        margin-top: .15rem;
+        line-height: 1.3;
+    }
+
+    .van-tab--active {
+        color: @blue-color
+    }
+
+
+}
+
+.main-panel {
+
+    background: rgb(248, 248, 248);
+    height: calc(100vh - 2.04rem);
+    overflow-y: scroll;
+
+    .panel {
+        background: #fff;
+        margin-bottom: .1rem;
+        padding-top: .16rem;
+    }
+
+
+    .chart-title {
+        padding-left: .36rem;
+        font-size: .14rem;
+        color: @blue-color;
+        background: url(../images/Icon/ic_sales_forecast.png);
+        background-size: .16rem .16rem;
+        background-repeat: no-repeat;
+        background-position-x: .16rem;
+        background-position-y: center;
+        margin: 0 0 .02rem 0;
+    }
+
+    .chart-tips {
+        font-size: .13rem;
+        margin: 0rem 0rem 0rem .36rem;
+        color: @blue-color;
+        opacity: .8;
+    }
+}
