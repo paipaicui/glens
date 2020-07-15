@@ -19,33 +19,22 @@
       </van-col>
     </van-row>
 
-    <van-tabs line-width="25%" color="#0F7EE9" class="main-tab" @click="getHomeIndex">
-      <van-tab title="销售预期"> </van-tab>
-      <van-tab title="升迁提升（1）"></van-tab>
-      <van-tab title="推送信息（7/13）"></van-tab>
-      <van-tab title="我的记录（2880）"></van-tab>
+    <van-tabs line-width="25%" color="#0F7EE9" class="main-tab" @click="getHomeIndex" v-model="active">
+      <van-tab title="销售预期" name="home0"> </van-tab>
+      <van-tab title="升迁提升（1）" name="home1"></van-tab>
+      <van-tab title="推送信息（7/13）" name="home2"></van-tab>
+      <van-tab title="我的记录（2880）" name="home3"></van-tab>
     </van-tabs>
-    <div class="main-panel" :is="currentView"></div>
+    <router-view></router-view>
 
   </div>
 </template>
 
 <script>
-import home0 from './home0';
-import home1 from './home1';
-import home2 from './home2';
-import home3 from './home3';
 export default {
-  components: {
-    home0,
-    home1,
-    home2,
-    home3
-  },
   data() {
     return {
-      currentView: 'home0',
-      active: 0,
+      active: '',
       menu: [
         {
           href: '',
@@ -70,14 +59,16 @@ export default {
       ]
     };
   },
-
+  mounted() {
+    this.active = this.$route.path.split('/')[1];
+  },
   methods: {
     back() {
       this.$router.go(-1);
     },
     add() {},
     getHomeIndex(index, title) {
-      this.currentView = 'home' + index;
+      this.$router.push({ path: index });
     }
   }
 };

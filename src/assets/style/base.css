@@ -84,6 +84,7 @@
   color: #0F7EE9;
 }
 .main-panel {
+  position: relative;
   background: #f8f8f8;
   height: calc(100vh - 2.04rem);
   overflow-y: scroll;
@@ -109,4 +110,19 @@
   margin: 0rem 0rem 0rem 0.36rem;
   color: #0F7EE9;
   opacity: 0.8;
+}
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.loading,
+.pageEmpty {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 0.14rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -4,19 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vant from 'vant';
-import 'vant/lib/index.css'
-import './assets/js/screen.js'
-import './assets/style/base.css'
 import less from 'less'
-
+import store from './store'
+require('./mock');
 Vue.use(less)
 Vue.use(Vant);
 Vue.config.productionTip = false
+
+import './assets/js/screen.js'
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

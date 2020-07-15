@@ -1,17 +1,20 @@
 <template>
-  <div class="panel-box">
-    <div class="panel">
-      <p class="chart-title">三个月销售预测</p>
-      <p class="chart-tips">(截止1月底，预计承接1615万元）</p>
-      <div ref="three" style="height:200px"></div>
-      <div v-if="opinionData1.length>0"></div>
-    </div>
-    <div class="panel">
-      <p class="chart-title">六个月销售预测</p>
-      <p class="chart-tips">(截止1月底，预计承接1615万元）</p>
-      <div ref="six" style="height:200px"></div>
+  <div class="main-panel">
+    <div class="panel-box">
+      <div class="panel">
+        <p class="chart-title">三个月销售预测</p>
+        <p class="chart-tips">(截止1月底，预计承接1615万元）</p>
+        <div ref="three" style="height:200px"></div>
+        <div v-if="opinionData1.length>0"></div>
+      </div>
+      <div class="panel">
+        <p class="chart-title">六个月销售预测</p>
+        <p class="chart-tips">(截止1月底，预计承接1615万元）</p>
+        <div ref="six" style="height:200px"></div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>

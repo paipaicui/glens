@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-
-    <router-view></router-view>
-
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <script>
@@ -31,6 +31,8 @@ export default {
 };
 </script>
 <style>
+@import 'vant/lib/index.css';
+@import './assets/style/base.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
