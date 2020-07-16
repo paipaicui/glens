@@ -13,7 +13,6 @@ Vue.config.productionTip = false
 
 import './assets/js/screen.js'
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

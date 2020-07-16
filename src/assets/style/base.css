@@ -1,3 +1,72 @@
+html,
+body {
+  font-size: 0.14rem;
+  line-height: 0.2rem;
+}
+.font3 {
+  color: #333;
+}
+.font6 {
+  color: #666;
+}
+.font9 {
+  color: #999;
+  font-weight: normal;
+}
+.line1 {
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.line2 {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.van-empty {
+  background: #fff;
+}
+.van-overlay {
+  z-index: 9;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.icon-name,
+.timer,
+.goodjob {
+  color: #999;
+  font-size: 0.12rem;
+  padding-left: 0.18rem;
+  background: url(../images/Icon/ic_time.png) left center no-repeat;
+  background-size: 0.16rem 0.16rem;
+}
+.icon-name {
+  background-image: url(../images/Icon/ic_list_client_grey.png);
+}
+.goodjob {
+  background-image: url(../images/Icon/ic_praise.png);
+}
+.goodjob-active {
+  background-image: url(../images/Icon/ic_praise_action.png);
+  color: #0F7EE9;
+}
+.main-top {
+  height: 2.04rem;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  background: #fff;
+}
 .van-nav-bar {
   height: 0.44rem;
   background: #0F7EE9;
@@ -84,10 +153,8 @@
   color: #0F7EE9;
 }
 .main-panel {
-  position: relative;
   background: #f8f8f8;
-  height: calc(100vh - 2.04rem);
-  overflow-y: scroll;
+  padding-top: 2.04rem;
 }
 .main-panel .panel {
   background: #fff;
@@ -111,6 +178,40 @@
   color: #0F7EE9;
   opacity: 0.8;
 }
+.menu-list {
+  display: inline-block;
+  position: absolute;
+  top: 0.44rem;
+  right: 0.16rem;
+  width: 1.14rem;
+  padding-top: 0.08rem;
+  background-image: url(../images/popupmenu_arrow.png);
+  background-position-x: 0.85rem;
+  background-position-y: 0rem;
+  background-size: 0.16rem 0.08rem;
+  background-repeat: no-repeat;
+}
+.menu-list ul {
+  background: #fff;
+  border-radius: 3px;
+}
+.menu-list ul li {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  margin: 0 0.05rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.menu-list ul li span {
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+}
+.menu-list ul li span img {
+  display: inline-block;
+  width: 0.16rem;
+  height: 0.16rem;
+  margin: 0 0.08rem;
+}
 .between {
   display: flex;
   align-items: center;
@@ -118,9 +219,10 @@
 }
 .loading,
 .pageEmpty {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
+  top: 0;
   font-size: 0.14rem;
   display: flex;
   justify-content: center;
