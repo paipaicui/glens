@@ -5,6 +5,7 @@ let list = {
   'data|10': [{
     "id":"@id",
     "title": " @ctitle(8, 30)",
+    "projectName": " @ctitle(5, 15)",
     "state": "@ctitle",
     "dateTime": '@date("yyyy-MM-dd")',
     "content":"@csentence(50,100)",

@@ -232,6 +232,23 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+.nav-height {
+  height: 0.44rem;
+}
+.nav-height .van-nav-bar {
+  position: fixed;
+  width: 100%;
+}
+.search-height {
+  height: 2.14rem;
+}
+.search-height .search-height-content {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 2.14rem;
+  background: #f8f8f8;
+}
 .picker .van-cell__value {
   background: url(../images/Icon/ic_list_arrow_right.png) right center no-repeat;
   background-size: 0.24rem 0.24rem;
@@ -249,6 +266,16 @@ textarea {
 }
 .van-cell-group .van-cell::after {
   border-bottom: 1px solid #e5e5e5 !important;
+}
+.van-cell-group .van-cell .img-icon {
+  display: inline-block;
+  width: 0.24rem;
+  height: 0.24rem;
+  margin-right: 0.04rem;
+}
+.van-cell-group .van-cell .fixed {
+  display: flex;
+  align-items: center;
 }
 .van-cell-group .van-cell .van-field__label {
   color: #333;
@@ -274,6 +301,9 @@ textarea {
 }
 .van-cell-group .van-cell .cell-title span.icon.icon-client {
   background-image: url(../images/Icon/ic_list_client.png);
+}
+.van-cell-group .van-cell .cell-title span.icon.icon-client-grey {
+  background-image: url(../images/Icon/ic_list_client_grey.png);
 }
 .van-cell-group .van-cell .cell-title span.icon.value-info {
   background-image: url(../images/Icon/ic_list_valuable_info.png);
@@ -333,10 +363,12 @@ textarea {
   font-size: 0.18rem;
 }
 .search-box {
-  height: 1.35rem;
-  padding: 0.16rem 0;
+  box-sizing: border-box;
+  padding: 0.16rem 0 0 0;
   text-align: center;
   background: #fff;
+  width: 100%;
+  z-index: 2;
 }
 .search-box .searchBig {
   display: inline-block;

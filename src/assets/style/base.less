@@ -290,7 +290,24 @@ textarea {
     align-items: center;
 }
 
-
+.nav-height{
+    height: .44rem;
+    .van-nav-bar{
+        position: fixed;
+        width: 100%;
+    }
+}
+.search-height{
+    height: 2.14rem;
+    
+    .search-height-content{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        height: 2.14rem;
+        background: #f8f8f8;
+    }
+}
 //addwork
 .picker .van-cell__value {
     background: url(../images/Icon/ic_list_arrow_right.png) right center no-repeat;
@@ -315,6 +332,16 @@ textarea {
             border-bottom: 1px solid #e5e5e5 !important;
         }
 
+        .img-icon{
+            display: inline-block;
+            width: .24rem;
+            height: .24rem;
+            margin-right: .04rem;
+        }
+.fixed{
+    display: flex;
+    align-items: center;
+}
         .van-field__label {
             color: #333;
         }
@@ -342,7 +369,9 @@ textarea {
                 &.icon-client {
                     background-image: url(../images/Icon/ic_list_client.png);
                 }
-
+                &.icon-client-grey {
+                    background-image: url(../images/Icon/ic_list_client_grey.png);
+                }
                 &.value-info {
                     background-image: url(../images/Icon/ic_list_valuable_info.png)
                 }
@@ -418,11 +447,12 @@ textarea {
 }
 
 .search-box {
-    height: 1.35rem;
-    padding: .16rem 0;
+    box-sizing: border-box;
+    padding: .16rem 0 0 0;
     text-align: center;
     background: @white;
-
+    width: 100%;
+    z-index: 2;
     .searchBig {
         display: inline-block;
         height: .48rem;

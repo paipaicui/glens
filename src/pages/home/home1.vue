@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import { Toast } from 'vant';
 import { mapActions } from 'vuex';
 export default {
   data() {
