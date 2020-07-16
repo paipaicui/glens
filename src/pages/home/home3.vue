@@ -1,5 +1,8 @@
 <template>
   <div class="main-panel">
+    <form action="/">
+      <van-search v-model="value" placeholder="请输入搜索关键词" @search="onSearch" />
+    </form>
     <div v-if="pageLoading" class="loading">
       <van-loading color="#1989fa" vertical>加载中...</van-loading>
     </div>
@@ -38,12 +41,10 @@
       </van-pull-refresh>
     </template>
   </div>
-</template
->,
+</template>
 
 <script>
-import { Toast } from "vant";
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -51,21 +52,22 @@ export default {
       isLoading: false,
       pageLoading: true,
       dropUp: false,
-      moreText: "加载更多数据",
+      moreText: '加载更多数据',
       isOver: false,
-      overText: "没有更多数据了",
+      overText: '没有更多数据了',
       pageEmpty: false,
       pageSize: 0,
       pageNum: 10,
-      data: []
+      data: [],
+      value: ''
     };
   },
   mounted() {
     this.getList();
-    window.addEventListener("scroll", this.pulldown);
+    window.addEventListener('scroll', this.pulldown);
   },
   methods: {
-    ...mapActions({ list: "home2/getList" }),
+    ...mapActions({ list: 'home2/getList' }),
     getList() {
       let _self = this;
       return new Promise(resolve => {
@@ -85,7 +87,7 @@ export default {
     onRefresh() {
       let _self = this;
       _self.getList().then(res => {
-        Toast("刷新成功");
+        Toast('刷新成功');
         _self.isLoading = false;
       });
     },
@@ -112,11 +114,14 @@ export default {
           });
         }
       }
+    },
+    onSearch(val) {
+      Toast(val);
     }
   },
   destroyed() {
     if (this.$refs.scroll) {
-      window.addEventListener("scroll", this.pulldown);
+      window.addEventListener('scroll', this.pulldown);
     }
   }
 };
@@ -130,13 +135,16 @@ ul {
     position: relative;
     &::after {
       position: absolute;
-      content: "";
-      bottom: 0.01rem;
-      left: 0.16rem;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
       right: 0.16rem;
-      height: 0.01rem;
-      background: #e5e5e5;
-      opacity: 0.5;
+      bottom: 0;
+      left: 0.16rem;
+      border-bottom: 1px solid #e5e5e5;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
     }
     &.active {
       .tips {
@@ -170,8 +178,8 @@ ul {
       color: #fff;
       font-size: 0.12rem;
       border-radius: 3px;
-      height: .2rem;
-      line-height: .2rem;
+      height: 0.2rem;
+      line-height: 0.2rem;
       display: inline-block;
     }
   }

@@ -3,6 +3,10 @@ body {
   font-size: 0.14rem;
   line-height: 0.2rem;
 }
+input,
+textarea {
+  color: #666;
+}
 .font3 {
   color: #333;
 }
@@ -227,4 +231,104 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.picker .van-cell__value {
+  background: url(../images/Icon/ic_list_arrow_right.png) right center no-repeat;
+  background-size: 0.24rem 0.24rem;
+  padding-right: 0.24rem;
+}
+.van-cell-group {
+  margin-bottom: 0.08rem;
+}
+.page-grey {
+  background: #F8F8F8;
+}
+.van-cell-group .van-cell {
+  padding: 0.14rem 0.16rem;
+  font-size: 0.16rem;
+}
+.van-cell-group .van-cell::after {
+  border-bottom: 1px solid #e5e5e5 !important;
+}
+.van-cell-group .van-cell .van-field__label {
+  color: #333;
+}
+.van-cell-group .van-cell .cell-title {
+  margin: 0;
+  font-size: 0.16rem;
+  display: flex;
+  align-items: center;
+  height: 0.24rem;
+}
+.van-cell-group .van-cell .cell-title span.icon {
+  display: inline-block;
+  width: 0.24rem;
+  height: 0.24rem;
+  background-size: 0.24rem 0.24rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  margin-right: 0.04rem;
+}
+.van-cell-group .van-cell .cell-title span.icon.base-info {
+  background-image: url(../images/Icon/ic_list_basic_Info.png);
+}
+.van-cell-group .van-cell .cell-title span.icon.icon-client {
+  background-image: url(../images/Icon/ic_list_client.png);
+}
+.van-cell-group .van-cell .cell-title span.icon.value-info {
+  background-image: url(../images/Icon/ic_list_valuable_info.png);
+}
+.van-cell-group .van-cell .height40 {
+  margin-bottom: 0.14rem;
+}
+.van-cell-group .van-cell .require {
+  color: #ee0a24;
+  font-size: 14px;
+}
+.van-cell-group .van-cell .thin {
+  font-weight: normal;
+}
+.van-cell-group .van-cell .icon-add {
+  font-size: 0.14rem;
+  color: #0F7EE9;
+  padding-left: 0.24rem;
+  background: url(../images/Icon/ic_list_add.png) left top no-repeat;
+  background-size: 0.24rem 0.24rem;
+}
+.van-cell-group .van-cell .text-area {
+  width: 100%;
+  font-size: 0.14rem;
+  border: 1px solid #e5e5e5;
+  padding: 0.08rem;
+  box-sizing: border-box;
+  resize: none !important;
+  height: 0.56rem;
+  border-radius: 3px;
+}
+.van-cell-group .van-cell ::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #ccc;
+}
+.van-cell-group .van-cell :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+}
+.van-cell-group .van-cell ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+}
+.van-cell-group .van-cell :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+.block-btn {
+  height: 0.48rem;
+  line-height: 0.48rem;
+  color: #fff;
+  margin: 0.32rem 0.16rem;
+  display: block;
+  text-align: center;
+  background: #0F7EE9;
+  border-radius: 0.08rem;
+  font-size: 0.18rem;
 }

@@ -11,28 +11,19 @@
             <router-link :to="{ path: 'pushMessage', query: { id: item.id } }">
               <span class="tips"></span>
               <h4 class="line1 title">
-                <span class="font9">客户名称：</span
-                ><span class="font3">{{ item.title }}</span>
+                <span class="font9">客户名称：</span><span class="font3">{{ item.title }}</span>
               </h4>
               <p class="line2">
-                <span class="font9">推送内容：</span
-                ><span class="font6">{{ item.content }}</span>
+                <span class="font9">推送内容：</span><span class="font6">{{ item.content }}</span>
               </p>
             </router-link>
             <van-row>
-              <van-col span="8"
-                ><span class="icon-name">{{ item.name }}</span></van-col
-              >
-              <van-col span="8" class="text-center"
-                ><span class="timer">{{ item.dateTime }}</span></van-col
-              >
+              <van-col span="8"><span class="icon-name">{{ item.name }}</span></van-col>
+              <van-col span="8" class="text-center"><span class="timer">{{ item.dateTime }}</span></van-col>
               <van-col span="8" class="text-right">
-                <span
-                  :class="
+                <span :class="
                     hasExisted(item.id) ? 'goodjob-active goodjob' : 'goodjob'
-                  "
-                  @click="goodJob(item.id, hasExisted(item.id))"
-                >
+                  " @click="goodJob(item.id, hasExisted(item.id))">
                   <template v-if="hasExisted(item.id)">
                     {{ item.goodjob }}
                   </template>
@@ -50,12 +41,12 @@
         <p class="text-center" v-if="isOver">{{ overText }}</p>
       </van-pull-refresh>
     </template>
-  </div> </template
->,
+  </div>
+</template>
 
 <script>
-import { Toast } from "vant";
-import { mapActions } from "vuex";
+import { Toast } from 'vant';
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -63,9 +54,9 @@ export default {
       isLoading: false,
       pageLoading: true,
       dropUp: false,
-      moreText: "加载更多数据",
+      moreText: '加载更多数据',
       isOver: false,
-      overText: "没有更多数据了",
+      overText: '没有更多数据了',
       pageEmpty: false,
       pageSize: 0,
       pageNum: 10,
@@ -74,10 +65,10 @@ export default {
   },
   mounted() {
     this.getList();
-    window.addEventListener("scroll", this.pulldown);
+    window.addEventListener('scroll', this.pulldown);
   },
   methods: {
-    ...mapActions({ list: "home2/getList" }),
+    ...mapActions({ list: 'home2/getList' }),
     getList() {
       let _self = this;
       return new Promise(resolve => {
@@ -97,7 +88,7 @@ export default {
     onRefresh() {
       let _self = this;
       _self.getList().then(res => {
-        Toast("刷新成功");
+        Toast('刷新成功');
         _self.isLoading = false;
       });
     },
@@ -129,7 +120,9 @@ export default {
     goodJob(id, state) {
       if (state) {
         this.goodJobList.splice(
-          this.goodJobList.findIndex(item => item === id),1);
+          this.goodJobList.findIndex(item => item === id),
+          1
+        );
       } else {
         this.goodJobList.push(id);
         //此处调用点赞接口
@@ -146,7 +139,7 @@ export default {
   },
   destroyed() {
     if (this.$refs.scroll) {
-      window.addEventListener("scroll", this.pulldown);
+      window.addEventListener('scroll', this.pulldown);
     }
   }
 };
@@ -160,7 +153,7 @@ ul {
     position: relative;
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       bottom: 0.01rem;
       left: 0.16rem;
       right: 0.16rem;
@@ -168,18 +161,18 @@ ul {
       background: #e5e5e5;
       opacity: 0.5;
     }
-&.active {
-  .tips{
-    display: inline-block;
-    width: .08rem;
-    height: .08rem;
-    background: #ff0000;
-    border-radius: 50%;
-    position: absolute;
-    top: .16rem;
-    right: .16rem;
-  }
-}
+    &.active {
+      .tips {
+        display: inline-block;
+        width: 0.08rem;
+        height: 0.08rem;
+        background: #ff0000;
+        border-radius: 50%;
+        position: absolute;
+        top: 0.16rem;
+        right: 0.16rem;
+      }
+    }
     a {
       display: block;
     }
