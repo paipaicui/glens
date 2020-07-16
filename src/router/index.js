@@ -6,13 +6,11 @@ Vue.use(Router);
 
 export default new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       path: "/",
       redirect: "/home0",
       component: Home,
-      children: [
-        {
+      children: [{
           path: "/home0",
           meta: {
             title: "销售预期",
@@ -20,7 +18,7 @@ export default new Router({
             index: 0
           },
           component: () =>
-            import(/* webpackChunkName: "home" */ "../pages/home/home0.vue")
+            import( /* webpackChunkName: "home" */ "../pages/home/home0.vue")
         },
         {
           path: "/home1",
@@ -30,7 +28,7 @@ export default new Router({
             index: 0
           },
           component: () =>
-            import(/* webpackChunkName: "home" */ "../pages/home/home1.vue")
+            import( /* webpackChunkName: "home" */ "../pages/home/home1.vue")
         },
         {
           path: "/home2",
@@ -40,7 +38,7 @@ export default new Router({
             index: 0
           },
           component: () =>
-            import(/* webpackChunkName: "home" */ "../pages/home/home2.vue")
+            import( /* webpackChunkName: "home" */ "../pages/home/home2.vue")
         },
         {
           path: "/home3",
@@ -50,19 +48,19 @@ export default new Router({
             index: 0
           },
           component: () =>
-            import(/* webpackChunkName: "home" */ "../pages/home/home3.vue")
+            import( /* webpackChunkName: "home" */ "../pages/home/home3.vue")
         }
       ]
     },
     {
-      path:'/add_work_record',
+      path: '/addWorkRecord',
       meta: {
         title: "销售预期",
         keepAlive: false,
         index: 0
       },
-      component:  () =>
-      import(/* webpackChunkName: "add_work_record" */ "../pages/add/add_work_record.vue"),
+      component: () =>
+        import( /* webpackChunkName: "addWorkRecord" */ "../pages/add/addWorkRecord.vue"),
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -72,7 +70,10 @@ export default new Router({
       if (from.meta.keepAlive) {
         from.meta.savedPosition = document.body.scrollTop;
       }
-      return { x: 0, y: to.meta.savedPosition || 0 };
+      return {
+        x: 0,
+        y: to.meta.savedPosition || 0
+      };
     }
   }
 });

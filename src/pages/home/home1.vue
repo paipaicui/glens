@@ -11,7 +11,7 @@
             <router-link :to="{ path: 'upset', query: { id: item.id }}">
               <h4 class="line2">{{ item.title }}</h4>
               <p class="text-right">
-                
+
                 {{ item.state }}<span class="blue">{{ item.percent }}%</span>
               </p>
               <div class="between">
@@ -21,7 +21,7 @@
                 <div class="right timer">
                   {{ item.dateTime }}
                 </div>
-              </div> 
+              </div>
             </router-link>
 
           </li>
@@ -32,21 +32,21 @@
         <p class="text-center" v-if="isOver">{{ overText }}</p>
       </van-pull-refresh>
     </template>
-  </div> </template
->,
+  </div>
+</template>
 
 <script>
-import { Toast } from "vant";
-import { mapActions } from "vuex";
+import { Toast } from 'vant';
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
       isLoading: false,
       pageLoading: true,
       dropUp: false,
-      moreText: "加载更多数据",
+      moreText: '加载更多数据',
       isOver: false,
-      overText: "没有更多数据了",
+      overText: '没有更多数据了',
       pageEmpty: false,
       pageSize: 0,
       pageNum: 10,
@@ -56,10 +56,10 @@ export default {
   mounted() {
     this.getList();
 
-    window.addEventListener("scroll", this.pulldown);
+    window.addEventListener('scroll', this.pulldown);
   },
   methods: {
-    ...mapActions({ list: "home1/getList" }),
+    ...mapActions({ list: 'home1/getList' }),
     getList() {
       let _self = this;
       return new Promise(resolve => {
@@ -79,7 +79,7 @@ export default {
     onRefresh() {
       let _self = this;
       _self.getList().then(res => {
-        Toast("刷新成功");
+        Toast('刷新成功');
         _self.isLoading = false;
       });
     },
@@ -110,7 +110,7 @@ export default {
   },
   destroyed() {
     if (this.$refs.scroll) {
-      window.addEventListener("scroll", this.pulldown);
+      window.addEventListener('scroll', this.pulldown);
     }
   }
 };
@@ -124,7 +124,7 @@ ul {
     position: relative;
     &::before {
       position: absolute;
-      content: "项";
+      content: '项';
       display: inline-block;
       width: 0.2rem;
       height: 0.2rem;
@@ -140,20 +140,19 @@ ul {
     }
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       bottom: 0.01rem;
       left: 0.16rem;
       right: 0.16rem;
       height: 0.01rem;
       background: #e5e5e5;
-      opacity: .5;
+      opacity: 0.5;
     }
     h4 {
       margin: 0;
       font-size: 0.14rem;
       color: #333;
       line-height: 0.2rem;
-
     }
     p {
       font-size: 0.14rem;
@@ -172,7 +171,6 @@ ul {
           color: #666;
         }
       }
-
     }
   }
 }

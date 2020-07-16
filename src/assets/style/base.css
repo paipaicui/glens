@@ -332,3 +332,20 @@ textarea {
   border-radius: 0.08rem;
   font-size: 0.18rem;
 }
+.search-box {
+  height: 1.35rem;
+  padding: 0.16rem 0;
+  text-align: center;
+  background: #fff;
+}
+.search-box .searchBig {
+  display: inline-block;
+  height: 0.48rem;
+  width: 0.48rem;
+  background: url(../images/Icon/ic_search_big.png) left top no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 0.16rem;
+}
+.search-box p {
+  margin: 0;
+}
