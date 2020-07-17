@@ -55,12 +55,22 @@ export default new Router({
     {
       path: '/addWorkRecord',
       meta: {
-        title: "销售预期",
+        title: "新增销售任务",
         keepAlive: false,
         index: 0
       },
       component: () =>
         import( /* webpackChunkName: "addWorkRecord" */ "../pages/add/addWorkRecord.vue"),
+    },
+    {
+      path: '/addCustomer',
+      meta: {
+        title: "创建客户联系人",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "addCustomer" */ "../pages/add/addCustomer.vue"),
     }
   ],
   scrollBehavior(to, from, savedPosition) {

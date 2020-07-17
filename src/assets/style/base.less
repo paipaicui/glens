@@ -81,6 +81,23 @@ textarea {
     color: @blue-color
 }
 
+.block-btn-fixed {
+    position: fixed;
+    bottom: .32rem;
+    width: 100%;
+    height: .48rem;
+    line-height: .48rem;
+    color: @white;
+    width: calc(100vw - .32rem);
+    margin: 0 .16rem;
+    display: block;
+    text-align: center;
+    background: @blue-color;
+    border-radius: .08rem;
+    font-size: .18rem;
+
+}
+
 .main-top {
     height: 2.04rem;
     position: fixed;
@@ -290,17 +307,19 @@ textarea {
     align-items: center;
 }
 
-.nav-height{
+.nav-height {
     height: .44rem;
-    .van-nav-bar{
+
+    .van-nav-bar {
         position: fixed;
         width: 100%;
     }
 }
-.search-height{
+
+.search-height {
     height: 2.14rem;
-    
-    .search-height-content{
+
+    .search-height-content {
         position: fixed;
         z-index: 1;
         width: 100%;
@@ -308,6 +327,7 @@ textarea {
         background: #f8f8f8;
     }
 }
+
 //addwork
 .picker .van-cell__value {
     background: url(../images/Icon/ic_list_arrow_right.png) right center no-repeat;
@@ -332,16 +352,18 @@ textarea {
             border-bottom: 1px solid #e5e5e5 !important;
         }
 
-        .img-icon{
+        .img-icon {
             display: inline-block;
             width: .24rem;
             height: .24rem;
             margin-right: .04rem;
         }
-.fixed{
-    display: flex;
-    align-items: center;
-}
+
+        .fixed {
+            display: flex;
+            align-items: center;
+        }
+
         .van-field__label {
             color: #333;
         }
@@ -369,9 +391,11 @@ textarea {
                 &.icon-client {
                     background-image: url(../images/Icon/ic_list_client.png);
                 }
+
                 &.icon-client-grey {
                     background-image: url(../images/Icon/ic_list_client_grey.png);
                 }
+
                 &.value-info {
                     background-image: url(../images/Icon/ic_list_valuable_info.png)
                 }
@@ -453,6 +477,7 @@ textarea {
     background: @white;
     width: 100%;
     z-index: 2;
+
     .searchBig {
         display: inline-block;
         height: .48rem;
@@ -465,4 +490,23 @@ textarea {
     p {
         margin: 0;
     }
+}
+
+.radioSex {
+    font-size: 12px;
+    display: inline-block;
+    height: .24rem;
+    width: .38rem;
+    line-height: .24rem;
+    text-align: center;
+}
+
+.activeRadio {
+    background: @blue-color;
+    color: @white
+}
+
+.inactiveRadio {
+    background: #ccc;
+    color: #fff;
 }
