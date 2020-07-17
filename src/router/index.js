@@ -5,7 +5,6 @@ import Home from "@/pages/home/index.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
   routes: [{
       path: "/",
       redirect: "/home0",
