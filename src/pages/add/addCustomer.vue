@@ -13,7 +13,7 @@
         <van-cell>
           <template #title>
             <h4 class="cell-title thin">
-              <span class="base-info icon"></span>基本信息
+              基本信息
             </h4>
           </template>
         </van-cell>
@@ -76,4 +76,7 @@ export default {
 </script>
 
 <style scoped>
+.van-radio__icon {
+  height: auto;
+}
 </style>
