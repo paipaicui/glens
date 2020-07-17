@@ -54,7 +54,7 @@ export default new Router({
     {
       path: '/addWorkRecord',
       meta: {
-        title: "新增销售任务",
+        title: "新增工作记录",
         keepAlive: false,
         index: 0
       },
@@ -62,9 +62,39 @@ export default new Router({
         import( /* webpackChunkName: "addWorkRecord" */ "../pages/add/addWorkRecord.vue"),
     },
     {
-      path: '/addCustomer',
+      path: '/addSale',
+      meta: {
+        title: "创建销售任务",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "addSale" */ "../pages/add/addSale.vue"),
+    },
+    {
+      path: '/publicRelations',
+      meta: {
+        title: "创建公共关系",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "publicRelations" */ "../pages/add/publicRelations.vue"),
+    },
+    {
+      path: '/addCustomerConcat',
       meta: {
         title: "创建客户联系人",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "publicRelations" */ "../pages/add/addCustomerConcat.vue"),
+    },
+    {
+      path: '/addCustomer',
+      meta: {
+        title: "创建客户",
         keepAlive: false,
         index: 0
       },

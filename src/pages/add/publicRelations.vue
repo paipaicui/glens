@@ -18,15 +18,12 @@
           </template>
         </van-cell>
 
-        <van-field class="picker" v-model="form.pr" required readonly rows="1"
-          @click="showSearchBox('pr','查找销售任务','输入任务名称进行过滤')" autosize label="任务名称" type="textarea"
-          placeholder="请选择任务" />
+        <van-field class="picker" v-model="form.relations" required readonly rows="1"
+          @click="showSearchBox('relations','查找公共关系','输入客户名称进行过滤')" autosize label="任务名称" type="textarea"
+          placeholder="请选择公共关系" />
 
         <van-field class="picker" readonly required v-model="form.startDate" label="开始日期" placeholder="请选择开始日期"
           @click="showPickerdate1 = true" />
-
-        <van-field class="picker" readonly required v-model="form.endDate" label="结束日期" placeholder="请选择结束日期"
-          @click="showPickerdate2 = true" />
 
         <van-field class="picker" v-model="form.state" required readonly rows="1" clickable autosize label="工作类型"
           type="textarea" placeholder="请选择任务" @click="isShowType = true" />
@@ -56,31 +53,6 @@
         </van-cell>
       </van-cell-group>
 
-      <!-- 相关员工 -->
-      <van-cell-group>
-        <van-cell>
-          <template #title>
-            <h4 class="cell-title thin">
-              <span class="require">&nbsp;</span>
-              <span class="icon-client icon"></span>相关员工
-            </h4>
-          </template>
-          <template #right-icon>
-            <span class="icon-add" @click="showSearchBox('xg_employee','查找人员','输入用户名或者工号进行过滤')">点击添加</span>
-          </template>
-        </van-cell>
-
-        <van-cell v-for="(item,key) in form.xg_employee" :key="key">
-          <template #title>
-            <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
-            </h4>
-          </template>
-          <template #right-icon>
-            <van-icon name="clear" color="#ccc" @click="remove('xg_employee',key)" />
-          </template>
-        </van-cell>
-      </van-cell-group>
       <!-- 客户联系人 -->
       <van-cell-group>
         <van-cell>
@@ -111,25 +83,12 @@
         <van-cell>
           <template #title>
             <h4 class="cell-title thin">
-              <span class="require">*</span>沟通事由
+              <span class="require">*</span>交流话题
             </h4>
           </template>
         </van-cell>
         <van-cell>
-          <textarea name class="text-area" cols placeholder="请输入沟通事由" v-model="form.goutong"></textarea>
-        </van-cell>
-      </van-cell-group>
-
-      <van-cell-group>
-        <van-cell>
-          <template #title>
-            <h4 class="cell-title thin">
-              <span class="require">*</span>沟通结果
-            </h4>
-          </template>
-        </van-cell>
-        <van-cell>
-          <textarea name class="text-area" cols placeholder="请输入沟通结果" v-model="form.result"></textarea>
+          <textarea name class="text-area" cols placeholder="请输入交流话题" v-model="form.goutong"></textarea>
         </van-cell>
       </van-cell-group>
 
@@ -242,10 +201,7 @@
       <van-datetime-picker @cancel="showPickerdate1 = false" @confirm="confirmStartDate" v-model="startDate"
         type="date" />
     </van-popup>
-    <!-- 结束时间 -->
-    <van-popup v-model="showPickerdate2" position="bottom">
-      <van-datetime-picker @cancel="showPickerdate2 = false" @confirm="confirmEndDate" v-model="endDate" type="date" />
-    </van-popup>
+
     <!-- 选择工作类型 -->
     <van-popup v-model="isShowType" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
       <div style="height: 100vh; overflow-y: scroll;">
@@ -267,37 +223,13 @@ export default {
 
   data() {
     return {
-      title: '新增销售任务-工作记录',
-      showPickerdate1: false,
-      showPickerdate2: false,
+      title: '新增公共关系-工作记录',
+      showPickerdate: false,
       isShowType: false,
       isShowSearch: false,
-      workType: [
-        {
-          text: '拜访接待',
-          image: require('@/assets/images/Icon/ic_job_visit.png')
-        },
-        {
-          text: '会议沟通',
-          image: require('@/assets/images/Icon/ic_job_meeting.png')
-        },
-        {
-          text: '电话联系',
-          image: require('@/assets/images/Icon/ic_job_phone.png')
-        },
-        {
-          text: '邮件联系',
-          image: require('@/assets/images/Icon/ic_job_mail.png')
-        },
-        {
-          text: '回访记录',
-          image: require('@/assets/images/Icon/ic_job_return_visit.png')
-        }
-      ],
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
       startDate: new Date(),
-      endDate: new Date(),
       searchTitle: '',
       searchTips: '',
       searchList: [],
@@ -306,15 +238,12 @@ export default {
       searchKeyWords: '',
       searchLoading: false,
       form: {
-        pr: '',
+        relations: '',
         startDate: '',
-        endDate: '',
         state: '',
         gt_employee: [],
-        xg_employee: [],
         customer: [],
         goutong: '',
-        result: '',
         need: '',
         packMsg: '',
         chance: '',
@@ -339,26 +268,6 @@ export default {
       this.searchTips = tips;
 
       //此处根据done判断需要请求的接口
-      switch (done) {
-        case 'pr':
-          break;
-
-        case 'gt_employee':
-        case 'xg_employee':
-        case 'customer':
-          _self.searchLoading = true;
-          _self.list().then(res => {
-            if (res) {
-              _self.searchList = res.data;
-              _self.searchList1 = res.data;
-              _self.searchLoading = false;
-            }
-          });
-          break;
-
-        default:
-          break;
-      }
     },
     //搜索框
     filter(val) {

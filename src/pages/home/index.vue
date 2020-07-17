@@ -79,22 +79,22 @@ export default {
         {
           text: '销售任务',
           icon: require('@/assets/images/Icon/ic_popupmenu_sales_task.png'),
-          link: ''
+          link: '/addSale'
         },
         {
           text: '公共关系',
           icon: require('@/assets/images/Icon/ic_popupmenu_public_relations.png'),
-          link: ''
+          link: '/publicRelations'
         },
         {
           text: '客户',
           icon: require('@/assets/images/Icon/ic_popupmenu_client.png'),
-          link: ''
+          link: '/addCustomer'
         },
         {
           text: '联系人',
           icon: require('@/assets/images/Icon/ic_popupmenu_contact.png'),
-          link: ''
+          link: '/addCustomerConcat'
         }
       ]
     };

@@ -186,6 +186,8 @@ textarea {
 }
 
 .main-tab {
+    border-bottom: .1rem solid @bg-grey ;
+
     .van-tab {
         -webkit-align-items: start;
         align-items: start;
@@ -194,7 +196,6 @@ textarea {
     .van-tabs__wrap,
     .van-tabs__nav--line {
         height: .56rem;
-        background: @bg-grey;
         overflow: hidden;
 
     }
@@ -218,7 +219,7 @@ textarea {
 
 .main-panel {
     background: rgb(248, 248, 248);
-    padding-top: 2.04rem;
+    padding-top: 2.14rem;
 
     .panel {
         background: #fff;
@@ -490,23 +491,4 @@ textarea {
     p {
         margin: 0;
     }
-}
-
-.radioSex {
-    font-size: 12px;
-    display: inline-block;
-    height: .24rem;
-    width: .38rem;
-    line-height: .24rem;
-    text-align: center;
-}
-
-.activeRadio {
-    background: @blue-color;
-    color: @white
-}
-
-.inactiveRadio {
-    background: #ccc;
-    color: #fff;
 }

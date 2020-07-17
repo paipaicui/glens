@@ -149,6 +149,9 @@ textarea {
 .main-menu .menu-icon4 {
   background-image: url(../images/Icon/ic_home_report.png);
 }
+.main-tab {
+  border-bottom: 0.1rem solid #F8F8F8;
+}
 .main-tab .van-tab {
   -webkit-align-items: start;
   align-items: start;
@@ -156,7 +159,6 @@ textarea {
 .main-tab .van-tabs__wrap,
 .main-tab .van-tabs__nav--line {
   height: 0.56rem;
-  background: #F8F8F8;
   overflow: hidden;
 }
 .main-tab .van-tab__text {
@@ -173,7 +175,7 @@ textarea {
 }
 .main-panel {
   background: #f8f8f8;
-  padding-top: 2.04rem;
+  padding-top: 2.14rem;
 }
 .main-panel .panel {
   background: #fff;
@@ -395,20 +397,4 @@ textarea {
 }
 .search-box p {
   margin: 0;
-}
-.radioSex {
-  font-size: 12px;
-  display: inline-block;
-  height: 0.24rem;
-  width: 0.38rem;
-  line-height: 0.24rem;
-  text-align: center;
-}
-.activeRadio {
-  background: #0F7EE9;
-  color: #fff;
-}
-.inactiveRadio {
-  background: #ccc;
-  color: #fff;
 }
