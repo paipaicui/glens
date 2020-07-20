@@ -316,6 +316,12 @@ textarea {
 .van-cell-group .van-cell .cell-title span.icon.base-info {
   background-image: url(../images/Icon/ic_list_basic_Info.png);
 }
+.van-cell-group .van-cell .cell-title span.icon.phase-info {
+  background-image: url(../images/Icon/ic_list_task_phase.png);
+}
+.van-cell-group .van-cell .cell-title span.icon.preferment-info {
+  background-image: url(../images/Icon/ic_list_preferment.png);
+}
 .van-cell-group .van-cell .cell-title span.icon.icon-client {
   background-image: url(../images/Icon/ic_list_client.png);
 }
@@ -397,4 +403,15 @@ textarea {
 }
 .search-box p {
   margin: 0;
+}
+.more {
+  color: #0F7EE9;
+  font-size: 0.14rem;
+}
+.rightPart {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  text-align: left;
+  color: #666;
 }

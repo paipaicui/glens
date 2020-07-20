@@ -23,7 +23,7 @@ export default new Router({
           path: "/home1",
           meta: {
             title: "升迁提示",
-            keepAlive: true,
+            keepAlive: false,
             index: 0
           },
           component: () =>
@@ -100,6 +100,16 @@ export default new Router({
       },
       component: () =>
         import( /* webpackChunkName: "addCustomer" */ "../pages/add/addCustomer.vue"),
+    },
+    {
+      path: '/upset',
+      meta: {
+        title: "升迁提示-销售任务执行",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "upset" */ "../pages/upset/index.vue"),
     }
   ],
   scrollBehavior(to, from, savedPosition) {

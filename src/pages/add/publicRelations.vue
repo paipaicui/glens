@@ -152,12 +152,48 @@
         </van-cell>
       </van-cell-group>
 
-      <div class="block-btn" @click="makeSure">确认</div>
+      <!-- 推送人员 -->
+      <van-cell-group>
+        <van-cell>
+          <template #title>
+            <h4 class="cell-title thin">
+              <span class="require">*</span>
+              <span class="icon-client icon"></span>推送人员
+            </h4>
+          </template>
+          <template #right-icon>
+            <span class="icon-add" @click="showSearchBox('push','查找推送人员','输入推送人员姓名(精确查找)')">点击添加</span>
+          </template>
+        </van-cell>
+
+        <van-cell v-for="(item,key) in form.push" :key="key">
+          <template #title>
+            <h4 class="cell-title font6 thin">
+              <span class="icon-client-grey icon"></span>{{item.projectName}}
+            </h4>
+          </template>
+          <template #right-icon>
+            <van-icon name="clear" color="#ccc" @click="remove('push',key)" />
+          </template>
+        </van-cell>
+        <van-cell>
+          <template #title>
+            <h4 class="cell-title height40 thin">
+              推动内容
+            </h4>
+          </template>
+          <template #label>
+            <textarea name class="text-area" cols placeholder="请输入推动内容" v-model="form.pushContent"></textarea>
+          </template>
+        </van-cell>
+      </van-cell-group>
+
+      <div class="block-btn" @click="makeSure">保存</div>
     </div>
 
     <!-- 搜索列表 -->
     <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; overflow-y: scroll">
         <div class="search-height">
           <div class="search-height-content">
             <van-nav-bar :title="searchTitle" left-arrow>
@@ -165,7 +201,7 @@
                 <span @click="close" class="icon back"></span>
               </template>
 
-              <template #right v-if="currentPage=='customer'">
+              <template #right v-if="currentPage=='relations'">
                 <span class="icon add" @click="addCustomer"></span>
               </template>
 
@@ -180,9 +216,9 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
-        <div v-if="searchList.length < 1 && searchLoading==false && currentPage=='customer'" class="block-btn-fixed"
-          @click="addCustomer">新增</div>
+        <van-empty v-if="searchEmpty && searchLoading==false" description="暂无数据" />
+        <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
+          class="block-btn-fixed" @click="addCustomer">新增</div>
         <van-cell-group>
           <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
             <template #title>
@@ -234,9 +270,33 @@ export default {
       searchTips: '',
       searchList: [],
       searchList1: [],
+      searchEmpty: false, //搜索列表是否为空
+      workType: [
+        {
+          text: '拜访接待',
+          image: require('@/assets/images/Icon/ic_job_visit.png')
+        },
+        {
+          text: '会议沟通',
+          image: require('@/assets/images/Icon/ic_job_meeting.png')
+        },
+        {
+          text: '电话联系',
+          image: require('@/assets/images/Icon/ic_job_phone.png')
+        },
+        {
+          text: '邮件联系',
+          image: require('@/assets/images/Icon/ic_job_mail.png')
+        },
+        {
+          text: '回访记录',
+          image: require('@/assets/images/Icon/ic_job_return_visit.png')
+        }
+      ],
       currentPage: '',
       searchKeyWords: '',
       searchLoading: false,
+      showPickerdate1: false,
       form: {
         relations: '',
         startDate: '',
@@ -248,7 +308,9 @@ export default {
         packMsg: '',
         chance: '',
         back: '',
-        other: ''
+        other: '',
+        push: [],
+        pushContent: ''
       }
     };
   },
@@ -284,6 +346,14 @@ export default {
       switch (this.currentPage) {
         case 'pr':
           this.form[this.currentPage] = val.projectName;
+          //执行搜索
+
+          //搜索结果为空，展示空页面
+          //if(data.length<1){
+          //   this.searchEmpty = true;
+          // }
+          this.searchEmpty = true;
+
           break;
 
         case 'gt_employee':
@@ -306,6 +376,7 @@ export default {
       this.searchTitle = '';
       this.searchTips = '';
       this.searchList = [];
+      this.searchEmpty = false;
     },
     confirmStartDate(val) {
       this.form.startDate = formatDate.date('YYYY-mm-dd', val);
@@ -320,10 +391,10 @@ export default {
       this.isShowType = false;
     },
     addCustomer() {
-      this.$router.push({ path: '/addCustomerConcat' });
+      this.$router.push({ path: '/addCustomer' });
     },
     makeSure() {
-      if (!this.form.pr) {
+      if (!this.form.relations) {
         Toast('请选择任务');
         return false;
       }
@@ -331,8 +402,8 @@ export default {
         Toast('请选择开始时间');
         return false;
       }
-      if (!this.form.endDate) {
-        Toast('请选择结束时间');
+      if (!this.form.state) {
+        Toast('请选择工作类型');
         return false;
       }
       if (this.form.gt_employee.length == 0) {
@@ -344,7 +415,7 @@ export default {
         return false;
       }
       if (!this.form.goutong.trim()) {
-        Toast('请输入沟通是由');
+        Toast('请输入交流话题');
         return false;
       }
       if (!this.form.result.trim()) {
