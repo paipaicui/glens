@@ -633,6 +633,28 @@ textarea {
     font-size: .18rem;
 }
 
+.line-btn {
+    height: .48rem;
+    line-height: .48rem;
+    color: @white;
+    text-align: center;
+    font-size: .18rem;
+
+    &.btn-red {
+        background: @red;
+    }
+
+    &.btn-blue {
+        background: @blue-color;
+    }
+}
+
+.position-bottom {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
 .btn-group {
     margin: .32rem .16rem;
 }
@@ -689,4 +711,36 @@ textarea {
     flex: 2;
     text-align: left;
     color: @font-grey6;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    .block {
+        width: 3rem;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+
+        .title {
+            font-size: .18rem;
+            height: .65rem;
+            line-height: .65rem;
+            text-align: center;
+            color: @blue-color;
+            display: block;
+
+        }
+    }
+}
+
+.van-overlay {
+
+    .van-cell-group,
+    .overlay-btn-group {
+        margin: 0;
+    }
 }

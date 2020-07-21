@@ -133,6 +133,18 @@
         </template>
       </van-cell>
 
+      <!-- 以下根据百分比实际情况显示 -->
+      <van-cell>
+        <template #title>
+          <p class="icon icon-flow font6">
+            营销策划预案流程-新（必填）
+          </p>
+        </template>
+        <template #right-icon>
+          <router-link to="/planning" class="icon-add-file"></router-link>
+        </template>
+      </van-cell>
+
     </van-cell-group>
     <div class="btn-group">
       <van-row gutter="15">

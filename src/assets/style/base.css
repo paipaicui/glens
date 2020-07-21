@@ -520,6 +520,24 @@ textarea {
   border-radius: 0.08rem;
   font-size: 0.18rem;
 }
+.line-btn {
+  height: 0.48rem;
+  line-height: 0.48rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.18rem;
+}
+.line-btn.btn-red {
+  background: #FF5252;
+}
+.line-btn.btn-blue {
+  background: #0F7EE9;
+}
+.position-bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
 .btn-group {
   margin: 0.32rem 0.16rem;
 }
@@ -567,4 +585,28 @@ textarea {
   flex: 2;
   text-align: left;
   color: #666;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.wrapper .block {
+  width: 3rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.wrapper .block .title {
+  font-size: 0.18rem;
+  height: 0.65rem;
+  line-height: 0.65rem;
+  text-align: center;
+  color: #0F7EE9;
+  display: block;
+}
+.van-overlay .van-cell-group,
+.van-overlay .overlay-btn-group {
+  margin: 0;
 }

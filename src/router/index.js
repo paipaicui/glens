@@ -119,7 +119,17 @@ export default new Router({
         index: 0
       },
       component: () =>
-        import( /* webpackChunkName: "upset" */ "../pages/upset/makeSureSaleProject.vue"),
+        import( /* webpackChunkName: "makeSureSaleProject" */ "../pages/upset/makeSureSaleProject.vue"),
+    },
+    {
+      path: '/planning',
+      meta: {
+        title: "营销策划预案",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "planning" */ "../pages/upset/planning.vue"),
     }
   ],
   scrollBehavior(to, from, savedPosition) {
