@@ -308,6 +308,10 @@ textarea {
     align-items: center;
 }
 
+.nb {
+    margin: 0px
+}
+
 .nav-height {
     height: .44rem;
 
@@ -430,6 +434,58 @@ textarea {
             padding-left: .24rem;
             background: url(../images/Icon/ic_list_add.png) left top no-repeat;
             background-size: .24rem .24rem;
+            display: inline-block;
+        }
+
+        .icon-file {
+            margin: 0px;
+            font-size: .14rem;
+            padding-left: .24rem;
+            background: url(../images/Icon/ic_list_log.png) left top no-repeat;
+            background-size: .24rem .24rem;
+        }
+
+        .icon-add-file {
+            margin: 0px;
+            background: url(../images/Icon/ic_list_add_cricle.png) left top no-repeat;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-size: 100% 100%;
+        }
+
+        .icon-radio {
+            margin: 0px;
+            background: url(../images/Icon/ic_list_tick.png) left top no-repeat;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-size: 100% 100%;
+        }
+
+        .icon-flow {
+            margin: 0px;
+            padding-left: .24rem;
+            background: url(../images/Icon/ic_list_flow.png) left top no-repeat;
+            background-size: .24rem .24rem;
+        }
+
+        .font-blue {
+            color: @blue-color
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .step-bg {
+            background: url(../images/Icon/ic_arrow_right.png) center center no-repeat;
+            background-size: .32rem .32rem;
+            display: inline-block;
+            height: .32rem;
+            width: .32rem;
         }
 
         .text-area {
@@ -467,6 +523,104 @@ textarea {
     }
 }
 
+.circle {
+    position: relative;
+    display: inline-block;
+    height: 64px;
+    width: 64px;
+    border: 3px solid @blue-color;
+    border-radius: 50%;
+
+    .box {
+        height: 65px;
+        width: 65px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+        overflow: hidden;
+    }
+
+    .box .percent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        justify-content: center;
+        color: #0F7EE9;
+        font-size: 16px;
+    }
+
+    .box .water {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: translate(0, 100%);
+        transform: translate(0, 100%);
+        background: #0F7EE9;
+        transition: all .3s;
+    }
+
+    .box .water_wave {
+        width: 200%;
+        position: absolute;
+        bottom: 100%;
+    }
+
+    .box .water_wave_back {
+        right: 0;
+        fill: #C7EEFF;
+        -webkit-animation: wave-back 1.4s infinite linear;
+        animation: wave-back 1.4s infinite linear;
+    }
+
+    .box .water_wave_front {
+        left: 0;
+        fill: #0F7EE9;
+        margin-bottom: -1px;
+        -webkit-animation: wave-front .7s infinite linear;
+        animation: wave-front .7s infinite linear;
+    }
+
+    @-webkit-keyframes wave-front {
+        100% {
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+    }
+
+    @keyframes wave-front {
+        100% {
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+    }
+
+    @-webkit-keyframes wave-back {
+        100% {
+            -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+        }
+    }
+
+    @keyframes wave-back {
+        100% {
+            -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+        }
+    }
+}
+
 .block-btn {
     height: .48rem;
     line-height: .48rem;
@@ -475,6 +629,29 @@ textarea {
     display: block;
     text-align: center;
     background: @blue-color;
+    border-radius: .08rem;
+    font-size: .18rem;
+}
+
+.btn-group {
+    margin: .32rem .16rem;
+}
+
+.danger-btn {
+    background: #FF5252;
+
+}
+
+.info-btn {
+    background: #ccc;
+}
+
+.fixed-btn {
+    height: .48rem;
+    line-height: .48rem;
+    color: @white;
+    display: block;
+    text-align: center;
     border-radius: .08rem;
     font-size: .18rem;
 }

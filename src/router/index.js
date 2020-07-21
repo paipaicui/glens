@@ -110,6 +110,16 @@ export default new Router({
       },
       component: () =>
         import( /* webpackChunkName: "upset" */ "../pages/upset/index.vue"),
+    },
+    {
+      path: '/makeSureSaleProject',
+      meta: {
+        title: "确定跟踪销售项目审批流程",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "upset" */ "../pages/upset/makeSureSaleProject.vue"),
     }
   ],
   scrollBehavior(to, from, savedPosition) {

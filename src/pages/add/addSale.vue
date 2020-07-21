@@ -191,7 +191,7 @@ export default {
 
   data() {
     return {
-      title: '新增公共关系-工作记录',
+      title: '新增销售项目',
       showPickerdate: false,
       isShowType: false,
       isShowSearch: false,
