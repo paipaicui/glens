@@ -15,7 +15,7 @@
           </h4>
         </template>
         <template #default>
-          <router-link to="" class="more">查看更多</router-link>
+          <router-link to="/upsetMore" class="more">查看更多</router-link>
         </template>
       </van-cell>
       <van-cell title="任务名称" value-class="rightPart" :value="data.taskName" />

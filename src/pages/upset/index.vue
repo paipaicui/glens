@@ -15,7 +15,7 @@
           </h4>
         </template>
         <template #default>
-          <router-link to="" class="more">查看更多</router-link>
+          <router-link to="/upsetMore" class="more">查看更多</router-link>
         </template>
       </van-cell>
       <van-cell title="客户名称" value-class="rightPart" :value="data.customerName" />
@@ -109,8 +109,8 @@
           </h4>
         </template>
       </van-cell>
-      <van-radio-group v-model="workRecordList">
-        <van-cell clickable>
+      <van-radio-group>
+        <van-cell>
           <template #title>
             <p class="icon icon-file font6">
               工作记录（<span class="font-blue">已填1条</span>）
@@ -122,6 +122,7 @@
         </van-cell>
       </van-radio-group>
 
+      <!-- 以下根据百分比实际情况显示 以下只展示有跳转页面的选项 -->
       <van-cell>
         <template #title>
           <p class="icon icon-flow font6">
@@ -133,7 +134,6 @@
         </template>
       </van-cell>
 
-      <!-- 以下根据百分比实际情况显示 -->
       <van-cell>
         <template #title>
           <p class="icon icon-flow font6">
@@ -145,11 +145,22 @@
         </template>
       </van-cell>
 
+      <van-cell>
+        <template #title>
+          <p class="icon icon-flow font6">
+            投标输赢分析流程（必填）
+          </p>
+        </template>
+        <template #right-icon>
+          <router-link to="/closely" class="icon-add-file"></router-link>
+        </template>
+      </van-cell>
+
     </van-cell-group>
     <div class="btn-group">
       <van-row gutter="15">
         <van-col span="12">
-          <span class="fixed-btn danger-btn">关闭</span>
+          <span class="fixed-btn danger-btn" @click="isClose=true">关闭</span>
         </van-col>
         <van-col span="12">
           <span class="fixed-btn info-btn" disabled>升迁</span>
@@ -157,12 +168,23 @@
       </van-row>
     </div>
 
+    <van-popup v-model="isClose" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
+      <div class="page-grey" style="height: 100vh; overflow-y: scroll;">
+        <close v-if="isClose" @close="close" @submit="subClose"></close>
+      </div>
+    </van-popup>
+
   </div>
 </template>
 
 <script>
 import { Toast } from 'vant';
+import close from '@/components/close';
+
 export default {
+  components: {
+    close
+  },
   data() {
     return {
       title: '销售任务执行',
@@ -173,6 +195,8 @@ export default {
         money: '100.00W',
         time: '2020-09-01'
       },
+
+      isClose: false,
       workRecord: '1',
       step: 5,
       step2: 10
@@ -192,6 +216,15 @@ export default {
     },
     step2() {
       this.setstep2 = 100 - this.step2;
+    }
+  },
+  methods: {
+    close() {
+      this.isClose = false;
+    },
+    subClose(val) {
+      console.log('关闭表单');
+      console.log(val);
     }
   }
 };

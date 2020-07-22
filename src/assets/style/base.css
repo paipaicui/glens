@@ -334,12 +334,16 @@ textarea {
 .van-cell-group .van-cell .cell-title span.icon.value-info {
   background-image: url(../images/Icon/ic_list_valuable_info.png);
 }
+.van-cell-group .van-cell .cell-title span.icon.icon-zh {
+  background-image: url(../images/Icon/ic_list_competitor.png);
+}
 .van-cell-group .van-cell .height40 {
   margin-bottom: 0.14rem;
 }
 .van-cell-group .van-cell .require {
   color: #ee0a24;
   font-size: 14px;
+  margin-left: -0.06rem;
 }
 .van-cell-group .van-cell .thin {
   font-weight: normal;
@@ -609,4 +613,12 @@ textarea {
 .van-overlay .van-cell-group,
 .van-overlay .overlay-btn-group {
   margin: 0;
+}
+.van-field__control {
+  color: #666;
+}
+.tips-red {
+  color: #ee0a24;
+  text-align: center;
+  font-size: 12px;
 }

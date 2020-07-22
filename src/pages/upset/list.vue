@@ -1,8 +1,12 @@
 <template>
-  <div class="main-panel">
-    <form action="/">
-      <van-search v-model="value" placeholder="请输入搜索关键词" @search="onSearch" />
-    </form>
+  <div class="page-grey">
+    <div class="nav-height">
+      <van-nav-bar :title="title" left-arrow>
+        <template #left>
+          <span @click="$router.go(-1)" class="icon back"></span>
+        </template>
+      </van-nav-bar>
+    </div>
     <div v-if="pageLoading" class="loading">
       <van-loading color="#1989fa" vertical>加载中...</van-loading>
     </div>
@@ -11,7 +15,7 @@
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <ul>
           <li v-for="(item, key) in data" :key="key" class="cell active">
-            <router-link :to="{ path: 'workRecord', query: { id: item.id } }">
+            <router-link :to="{ path: '/upsetRecord', query: { id: item.id } }">
               <span class="tips">销售任务</span>
               <h4 class="line2 title">
                 <span class="font9">任务名称：</span>
@@ -28,7 +32,7 @@
                 <span class="font6">{{ item.name }}</span>
               </van-col>
               <van-col span="12" class="text-right">
-                <span class="state">拜访/接待</span>
+                <span class="state">电话联系</span>
                 <span class="timer">07-01 13:24</span>
               </van-col>
             </van-row>
@@ -45,9 +49,11 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { Toast } from 'vant';
 export default {
   data() {
     return {
+      title: '销售任务-工作记录',
       goodJobList: [],
       isLoading: false,
       pageLoading: true,

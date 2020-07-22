@@ -84,7 +84,7 @@
         <van-cell v-for="(item,key) in form.gt_employee" :key="key">
           <template #title>
             <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
+              <span class="icon-client-grey icon"></span>{{item.text}}
             </h4>
           </template>
           <template #right-icon>
@@ -109,7 +109,7 @@
         <van-cell v-for="(item,key) in form.customer" :key="key">
           <template #title>
             <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
+              <span class="icon-client-grey icon"></span>{{item.text}}
             </h4>
           </template>
           <template #right-icon>
@@ -203,7 +203,7 @@ export default {
 
   data() {
     return {
-      title: '新增销售项目',
+      title: '修改销售任务具体信息',
       showPickerdate: false,
       isShowSearchPage: false,
       isShowSearch: false,
@@ -221,24 +221,36 @@ export default {
       searchLoading: false,
       showPickerdate1: false,
       form: {
-        projectName: '',
-        relations: '',
-        unit: '',
-        money: '',
-        startDate: '',
-        area: '',
-        industry: '',
-        state: '',
-        scale: '',
-        method: '',
-        projectManager: '',
-        department1: '',
-        peojectChief: '',
-        coordinator: '',
-        department2: '',
-        gt_employee: [],
-        customer: [],
-        result: ''
+        projectName: '桐乡市经济技术开发总公司',
+        relations: '苏交科集团股份有限公司',
+        unit: '苏交科集团股份有限公司',
+        money: '50.00',
+        startDate: '2020-09-01',
+        area: '亚洲/中国/华东地区/浙江/嘉兴市',
+        industry: '工程咨询/市政',
+        state: '勘察设计/勘察设计',
+        scale: '小型',
+        method: '招投标',
+        projectManager: '张清华',
+        department1: '苏交科华东岩士中心',
+        peojectChief: '张杰宝',
+        department2: '交通规划设计院华东院院长室',
+        coordinator: '陈冲',
+        department3: '苏交科华东综合管理部',
+        gt_employee: [
+          {
+            text: '黄军'
+          },
+          {
+            text: '张清华'
+          }
+        ],
+        customer: [
+          {
+            text: '唐纯'
+          }
+        ],
+        result: '白改黑项目，拟采用Epc模式'
       }
     };
   },

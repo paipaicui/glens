@@ -19,7 +19,7 @@
         </van-cell>
 
         <van-field class="picker" v-model="form.relations" required readonly rows="1"
-          @click="showSearchBox('relations','查找公共关系','输入客户名称进行过滤')" autosize label="任务名称" type="textarea"
+          @click="showSearchBox('relations','查找公共关系','输入任务名称进行过滤')" autosize label="任务名称" type="textarea"
           placeholder="请选择公共关系" />
 
         <van-field class="picker" readonly required v-model="form.startDate" label="开始日期" placeholder="请选择开始日期"
@@ -330,6 +330,13 @@ export default {
       this.searchTips = tips;
 
       //此处根据done判断需要请求的接口
+      //以下仅为demo展示
+      this.list().then(res => {
+        if (res) {
+          _self.searchList = res.data;
+          _self.searchList1 = res.data;
+        }
+      });
     },
     //搜索框
     filter(val) {
@@ -344,7 +351,7 @@ export default {
     //选择当前搜索值
     chooseSearch(val) {
       switch (this.currentPage) {
-        case 'pr':
+        case 'relations':
           this.form[this.currentPage] = val.projectName;
           //执行搜索
 
@@ -355,13 +362,11 @@ export default {
           this.searchEmpty = true;
 
           break;
-
         case 'gt_employee':
-        case 'xg_employee':
         case 'customer':
+        case 'push':
           this.form[this.currentPage].push(val);
           break;
-
         default:
           break;
       }

@@ -112,6 +112,36 @@ export default new Router({
         import( /* webpackChunkName: "upset" */ "../pages/upset/index.vue"),
     },
     {
+      path: '/upsetMore',
+      meta: {
+        title: "销售任务具体信息",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "upsetMore" */ "../pages/upset/desc.vue"),
+    },
+    {
+      path: '/upsetList',
+      meta: {
+        title: "查看所有",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "upsetMore" */ "../pages/upset/list.vue"),
+    },
+    {
+      path: '/upsetRecord',
+      meta: {
+        title: "确定跟踪销售项目审批流程",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "makeSureSaleProject" */ "../pages/upset/record.vue"),
+    },
+    {
       path: '/makeSureSaleProject',
       meta: {
         title: "确定跟踪销售项目审批流程",
@@ -122,6 +152,16 @@ export default new Router({
         import( /* webpackChunkName: "makeSureSaleProject" */ "../pages/upset/makeSureSaleProject.vue"),
     },
     {
+      path: '/editWorkRecord',
+      meta: {
+        title: "修改销售任务具体信息",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "makeSureSaleProject" */ "../pages/upset/editWorkRecord.vue"),
+    },
+    {
       path: '/planning',
       meta: {
         title: "营销策划预案",
@@ -130,7 +170,37 @@ export default new Router({
       },
       component: () =>
         import( /* webpackChunkName: "planning" */ "../pages/upset/planning.vue"),
-    }
+    },
+    {
+      path: '/closely',
+      meta: {
+        title: "输赢分析",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "closely" */ "../pages/upset/closely.vue"),
+    },
+    {
+      path: '/pushMessage',
+      meta: {
+        title: "推送信息-公共关系",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "pushMessage" */ "../pages/upset/pushMessage.vue"),
+    },
+    {
+      path: '/workRecord',
+      meta: {
+        title: "销售任务",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "workRecord" */ "../pages/upset/record.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
