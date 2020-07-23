@@ -278,6 +278,7 @@ textarea {
   margin-bottom: 0.08rem;
 }
 .page-grey {
+  min-height: 100vh;
   background: #F8F8F8;
 }
 .van-cell-group .van-cell {

@@ -201,6 +201,16 @@ export default new Router({
       component: () =>
         import( /* webpackChunkName: "workRecord" */ "../pages/upset/record.vue"),
     },
+    {
+      path: '/addCompetition',
+      meta: {
+        title: "创建竞争对手",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "addCompetition" */ "../pages/upset/addCompetition.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

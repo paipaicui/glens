@@ -199,7 +199,8 @@ export default {
       isClose: false,
       workRecord: '1',
       step: 5,
-      step2: 10
+      step2: 10,
+      searchList: []
     };
   },
   computed: {
