@@ -17,6 +17,15 @@ textarea {
   color: #999;
   font-weight: normal;
 }
+.size14 {
+  font-size: 0.14rem;
+}
+.size12 {
+  font-size: 0.12rem;
+}
+.margin-top {
+  margin-top: 0.08rem;
+}
 .line1 {
   display: inline-block;
   white-space: nowrap;
@@ -47,7 +56,9 @@ textarea {
 }
 .icon-name,
 .timer,
-.goodjob {
+.goodjob,
+.icon-person,
+.icon-star {
   color: #999;
   font-size: 0.12rem;
   padding-left: 0.18rem;
@@ -56,6 +67,13 @@ textarea {
 }
 .icon-name {
   background-image: url(../images/Icon/ic_list_client_grey.png);
+}
+.icon-star {
+  background-image: url(../images/Icon/ic_star.png);
+  margin-left: 0.1rem;
+}
+.icon-person {
+  background-image: url(../images/Icon/ic_person.png);
 }
 .goodjob {
   background-image: url(../images/Icon/ic_praise.png);
@@ -105,6 +123,9 @@ textarea {
 }
 .van-nav-bar .back {
   background-image: url(../images/Icon/ic_nav_back.png);
+}
+.van-nav-bar .screen {
+  background-image: url(../images/Icon/ic_nav_screen.png);
 }
 .van-nav-bar .add {
   background-image: url(../images/Icon/ic_nav_add.png);
@@ -173,7 +194,8 @@ textarea {
 .main-tab .van-tab--active {
   color: #0F7EE9;
 }
-.main-panel {
+.main-panel,
+.page-panel {
   background: #f8f8f8;
   padding-top: 2.14rem;
 }
@@ -198,6 +220,66 @@ textarea {
   margin: 0rem 0rem 0rem 0.36rem;
   color: #0F7EE9;
   opacity: 0.8;
+}
+.page-panel {
+  background: #fff;
+  padding: 0;
+}
+.page-panel ul li {
+  padding: 0.16rem 0.16rem 0.16rem 0.44rem;
+  background: #fff;
+  position: relative;
+}
+.page-panel ul li::before {
+  position: absolute;
+  content: '项';
+  display: inline-block;
+  width: 0.2rem;
+  height: 0.2rem;
+  left: 0.16rem;
+  top: 0.16rem;
+  background: #f8b224;
+  border-radius: 4px;
+  font-size: 0.1rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.2rem;
+}
+.page-panel ul li::after {
+  position: absolute;
+  content: '';
+  bottom: 0.01rem;
+  left: 0.16rem;
+  right: 0.16rem;
+  height: 0.01rem;
+  background: #e5e5e5;
+  opacity: 0.5;
+}
+.page-panel ul li h4 {
+  margin: 0;
+  font-size: 0.14rem;
+  color: #333;
+  line-height: 0.2rem;
+}
+.page-panel ul li p {
+  font-size: 0.14rem;
+  text-align: right;
+  color: #999;
+  margin: 0.08rem 0 0.1rem 0;
+}
+.page-panel ul li p span {
+  color: #0f7ee9;
+}
+.page-panel ul li .between .left {
+  font-size: 0.14rem;
+  color: #999;
+}
+.page-panel ul li .between .left span {
+  color: #666;
+}
+.page-panel ul .red::before {
+  content: '非';
+  background: #FF5252;
 }
 .menu-list {
   display: inline-block;

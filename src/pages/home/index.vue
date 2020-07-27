@@ -10,7 +10,7 @@
         </template>
       </van-nav-bar>
       <van-overlay :show="modalShow" @click="modalShow = false">
-        <div class="wrapper" @click.stop>
+        <div class="wrapper" >
           <div class="menu-list">
             <ul>
               <li v-for="(item,key) in menuList" :key="key" @click="go(item.link)">
@@ -50,7 +50,7 @@ export default {
       modalShow: false,
       menu: [
         {
-          href: '',
+          href: '/saleList',
           class: 'menu-icon1',
           text: '销售任务'
         },

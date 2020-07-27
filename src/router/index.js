@@ -211,6 +211,16 @@ export default new Router({
       component: () =>
         import( /* webpackChunkName: "addCompetition" */ "../pages/upset/addCompetition.vue"),
     },
+    {
+      path: '/saleList',
+      meta: {
+        title: "销售任务",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "saleList" */ "../pages/sales/list.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
