@@ -183,7 +183,7 @@ import close from '@/components/close';
 
 export default {
   components: {
-    close
+    close,
   },
   data() {
     return {
@@ -193,14 +193,14 @@ export default {
         taskName: '2020年嘉兴市桐乡市丰庆南路改造工程50.00W',
         taskType: '勘察设计',
         money: '100.00W',
-        time: '2020-09-01'
+        time: '2020-09-01',
       },
 
       isClose: false,
       workRecord: '1',
       step: 5,
       step2: 10,
-      searchList: []
+      searchList: [],
     };
   },
   computed: {
@@ -209,7 +209,7 @@ export default {
     },
     setstep2() {
       return 100 - this.step2;
-    }
+    },
   },
   watch: {
     step() {
@@ -217,7 +217,7 @@ export default {
     },
     step2() {
       this.setstep2 = 100 - this.step2;
-    }
+    },
   },
   methods: {
     close() {
@@ -226,8 +226,8 @@ export default {
     subClose(val) {
       console.log('关闭表单');
       console.log(val);
-    }
-  }
+    },
+  },
 };
 </script>
 

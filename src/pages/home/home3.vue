@@ -6,7 +6,7 @@
     <div v-if="pageLoading" class="loading">
       <van-loading color="#1989fa" vertical>加载中...</van-loading>
     </div>
-    <van-empty v-if="pageEmpty" description="暂无数据" />
+    <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')" v-if="pageEmpty" description="暂无数据" />
     <template v-else>
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <ul>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 import { mapActions } from 'vuex';
 export default {
   data() {
@@ -59,7 +60,7 @@ export default {
       pageSize: 0,
       pageNum: 10,
       data: [],
-      value: ''
+      value: '',
     };
   },
   mounted() {
@@ -70,8 +71,8 @@ export default {
     ...mapActions({ list: 'home2/getList' }),
     getList() {
       let _self = this;
-      return new Promise(resolve => {
-        _self.list().then(res => {
+      return new Promise((resolve) => {
+        _self.list().then((res) => {
           if (res) {
             _self.pageLoading = false;
             if (res.total > 0) {
@@ -86,7 +87,7 @@ export default {
     },
     onRefresh() {
       let _self = this;
-      _self.getList().then(res => {
+      _self.getList().then((res) => {
         Toast('刷新成功');
         _self.isLoading = false;
       });
@@ -102,7 +103,7 @@ export default {
           _self.dropUp == false
         ) {
           _self.dropUp = true;
-          _self.list().then(res => {
+          _self.list().then((res) => {
             if (res) {
               if (res.data.length > 0) {
                 _self.data = [..._self.data, ...res.data]; //拼接数组
@@ -117,13 +118,13 @@ export default {
     },
     onSearch(val) {
       Toast(val);
-    }
+    },
   },
   destroyed() {
     if (this.$refs.scroll) {
       window.addEventListener('scroll', this.pulldown);
     }
-  }
+  },
 };
 </script>
 

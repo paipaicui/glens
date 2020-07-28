@@ -23,15 +23,23 @@ textarea {
     color: @font-grey9;
     font-weight: normal;
 }
-.size14{
+
+.size14 {
     font-size: .14rem;
 }
-.size12{
+
+.size12 {
     font-size: .12rem;
 }
-.margin-top{
+
+.margin-top {
     margin-top: .08rem;
 }
+
+.van-empty__image {
+    width: 260px;
+}
+
 .line1 {
     display: inline-block;
     white-space: nowrap;
@@ -81,13 +89,16 @@ textarea {
 .icon-name {
     background-image: url(../images/Icon/ic_list_client_grey.png);
 }
-.icon-star{
+
+.icon-star {
     background-image: url(../images/Icon/ic_star.png);
     margin-left: .1rem;
 }
-.icon-person{
+
+.icon-person {
     background-image: url(../images/Icon/ic_person.png);
 }
+
 .goodjob {
     background-image: url(../images/Icon/ic_praise.png);
 }
@@ -122,6 +133,24 @@ textarea {
     background: #fff;
 }
 
+.arrow-bottom {
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    background: url(../images/Icon/ic_arrow_line_down.png) center center no-repeat;
+    background-size: 100% 100%;
+    margin-right: 2px;
+}
+
+.arrow-top {
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    background: url(../images/Icon/ic_arrow_line_up.png) center center no-repeat;
+    background-size: 100% 100%;
+    margin-right: 2px;
+}
+
 .van-nav-bar {
     height: .44rem;
     background: @blue-color;
@@ -145,13 +174,17 @@ textarea {
         background-image: url(../images/Icon/ic_nav_back.png);
     }
 
-    .screen{
+    .screen {
         background-image: url(../images/Icon/ic_nav_screen.png);
     }
 
     .add {
         background-image: url(../images/Icon/ic_nav_add.png);
     }
+}
+
+.font-blue {
+    color: @blue-color
 }
 
 .main-menu {
@@ -237,9 +270,22 @@ textarea {
 
 }
 
+.page-tab {
+
+    .van-tabs__wrap,
+    .van-tabs__nav--line {
+        height: 0.48rem !important;
+    }
+
+    .van-tab--active {
+        color: #0F7EE9;
+    }
+}
+
 .main-panel {
     background: rgb(248, 248, 248);
     padding-top: 2.14rem;
+
     .panel {
         background: #fff;
         margin-bottom: .1rem;
@@ -266,16 +312,17 @@ textarea {
         opacity: .8;
     }
 }
-.page-panel:extend(.main-panel){
+
+.page-panel:extend(.main-panel) {
     background: #fff;
     padding: 0;
-    ul {
-        li {
-          padding: 0.16rem 0.16rem 0.16rem 0.44rem;
-          background: #fff;
-          position: relative;
 
-          &::before {
+    .van-swipe-cell__wrapper {
+        padding: 0.16rem 0.16rem 0.16rem 0.44rem;
+        background: #fff;
+        position: relative;
+
+        &::before {
             position: absolute;
             content: '项';
             display: inline-block;
@@ -285,13 +332,13 @@ textarea {
             top: 0.16rem;
             background: #f8b224;
             border-radius: 4px;
-            border-radius: 4px;
             font-size: 0.1rem;
             color: #fff;
             text-align: center;
             line-height: 0.2rem;
-          }
-          &::after {
+        }
+
+        &::after {
             position: absolute;
             content: '';
             bottom: 0.01rem;
@@ -300,41 +347,151 @@ textarea {
             height: 0.01rem;
             background: #e5e5e5;
             opacity: 0.5;
-          }
-          h4 {
+        }
+
+        h4 {
             margin: 0;
             font-size: 0.14rem;
             color: #333;
             line-height: 0.2rem;
-          }
-          p {
+        }
+
+        p {
             font-size: 0.14rem;
             text-align: right;
             color: #999;
             margin: 0.08rem 0 0.1rem 0;
+
             span {
-              color: #0f7ee9;
+                color: #0f7ee9;
             }
-          }
-          .between {
+        }
+
+        .between {
             .left {
-              font-size: 0.14rem;
-              color: #999;
-              span {
-                color: #666;
-              }
+                font-size: 0.14rem;
+                color: #999;
+
+                span {
+                    color: #666;
+                }
             }
-          }
         }
-        .red{
-            &::before {
-                content: '非';
-                background: #FF5252;
-              }   
+    }
+
+    .van-search {
+        background: #f8f8f8;
+
+    }
+
+    .van-search__content {
+        background: #fff;
+
+    }
+
+    .red {
+        &::before {
+            content: '非';
+            background: #FF5252;
         }
-        
-      }
-} 
+    }
+
+    .van-swipe-cell__right {
+        .van-button {
+            height: 100%;
+        }
+
+        .van-button--info {
+            background: #0F7EE9;
+            border: #0F7EE9;
+        }
+    }
+
+}
+
+.font-blue {
+    color: @blue-color  !important;
+}
+
+.font-red {
+    color: #FF5252 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.flow-panel:extend(.main-panel) {
+    background: #fff;
+    padding: 0;
+
+    .van-swipe-cell__wrapper {
+        padding: 0.16rem 0.16rem 0.16rem 0.44rem;
+        background: #fff;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            content: ' ';
+            display: inline-block;
+            width: 0.2rem;
+            height: 0.2rem;
+            left: 0.16rem;
+            top: 0.16rem;
+            border-radius: 4px;
+            font-size: 0.1rem;
+            background: url(../images/Icon/ic_list_flow.png) center center no-repeat;
+            background-size: 100% 100%;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 0.01rem;
+            left: 0.16rem;
+            right: 0.16rem;
+            height: 0.01rem;
+            background: #e5e5e5;
+            opacity: 0.5;
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 0.14rem;
+            color: #333;
+            line-height: 0.2rem;
+        }
+
+        p {
+            font-size: 0.14rem;
+            text-align: right;
+            color: #999;
+            margin: 0.08rem 0 0.1rem 0;
+
+            span {
+                color: #0f7ee9;
+            }
+        }
+
+        .between {
+            .left {
+                font-size: 0.14rem;
+                color: #999;
+
+                span {
+                    color: #666;
+                }
+            }
+        }
+    }
+}
 
 
 
@@ -570,7 +727,15 @@ textarea {
 
 
         .font-blue {
-            color: @blue-color
+            color: @blue-color  !important;
+        }
+
+        .font-red {
+            color: #FF5252 !important;
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         .center {

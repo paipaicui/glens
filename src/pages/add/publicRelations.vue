@@ -201,7 +201,7 @@
                 <span @click="close" class="icon back"></span>
               </template>
 
-              <template #right v-if="currentPage=='relations'">
+              <template #right v-if="currentPage=='customer'">
                 <span class="icon add" @click="addCustomer"></span>
               </template>
 
@@ -216,7 +216,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchEmpty && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchEmpty && searchLoading==false" description="暂无数据" />
         <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
           class="block-btn-fixed" @click="addCustomer">新增</div>
         <van-cell-group>
@@ -254,7 +255,7 @@ import { mapActions } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
-    jobType
+    jobType,
   },
 
   data() {
@@ -274,24 +275,24 @@ export default {
       workType: [
         {
           text: '拜访接待',
-          image: require('@/assets/images/Icon/ic_job_visit.png')
+          image: require('@/assets/images/Icon/ic_job_visit.png'),
         },
         {
           text: '会议沟通',
-          image: require('@/assets/images/Icon/ic_job_meeting.png')
+          image: require('@/assets/images/Icon/ic_job_meeting.png'),
         },
         {
           text: '电话联系',
-          image: require('@/assets/images/Icon/ic_job_phone.png')
+          image: require('@/assets/images/Icon/ic_job_phone.png'),
         },
         {
           text: '邮件联系',
-          image: require('@/assets/images/Icon/ic_job_mail.png')
+          image: require('@/assets/images/Icon/ic_job_mail.png'),
         },
         {
           text: '回访记录',
-          image: require('@/assets/images/Icon/ic_job_return_visit.png')
-        }
+          image: require('@/assets/images/Icon/ic_job_return_visit.png'),
+        },
       ],
       currentPage: '',
       searchKeyWords: '',
@@ -310,14 +311,14 @@ export default {
         back: '',
         other: '',
         push: [],
-        pushContent: ''
-      }
+        pushContent: '',
+      },
     };
   },
   watch: {
     searchKeyWords(val) {
       this.filter(val);
-    }
+    },
   },
   methods: {
     ...mapActions({ list: 'home1/getList' }),
@@ -331,7 +332,7 @@ export default {
 
       //此处根据done判断需要请求的接口
       //以下仅为demo展示
-      this.list().then(res => {
+      this.list().then((res) => {
         if (res) {
           _self.searchList = res.data;
           _self.searchList1 = res.data;
@@ -341,7 +342,7 @@ export default {
     //搜索框
     filter(val) {
       let search = [];
-      this.searchList1.map(item => {
+      this.searchList1.map((item) => {
         if (item.name.indexOf(val) > -1 || item.projectName.indexOf(val) > -1) {
           search.push(item);
         }
@@ -440,8 +441,8 @@ export default {
         return false;
       }
       //提交表单
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -221,7 +221,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
         <div v-if="searchList.length < 1 && searchLoading==false && currentPage=='customer'" class="block-btn-fixed"
           @click="addCustomer">新增</div>
         <van-cell-group>
@@ -262,7 +263,7 @@ import { mapActions } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
-    jobType
+    jobType,
   },
 
   data() {
@@ -275,24 +276,24 @@ export default {
       workType: [
         {
           text: '拜访接待',
-          image: require('@/assets/images/Icon/ic_job_visit.png')
+          image: require('@/assets/images/Icon/ic_job_visit.png'),
         },
         {
           text: '会议沟通',
-          image: require('@/assets/images/Icon/ic_job_meeting.png')
+          image: require('@/assets/images/Icon/ic_job_meeting.png'),
         },
         {
           text: '电话联系',
-          image: require('@/assets/images/Icon/ic_job_phone.png')
+          image: require('@/assets/images/Icon/ic_job_phone.png'),
         },
         {
           text: '邮件联系',
-          image: require('@/assets/images/Icon/ic_job_mail.png')
+          image: require('@/assets/images/Icon/ic_job_mail.png'),
         },
         {
           text: '回访记录',
-          image: require('@/assets/images/Icon/ic_job_return_visit.png')
-        }
+          image: require('@/assets/images/Icon/ic_job_return_visit.png'),
+        },
       ],
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
@@ -319,14 +320,14 @@ export default {
         packMsg: '',
         chance: '',
         back: '',
-        other: ''
-      }
+        other: '',
+      },
     };
   },
   watch: {
     searchKeyWords(val) {
       this.filter(val);
-    }
+    },
   },
   methods: {
     ...mapActions({ list: 'home1/getList' }),
@@ -347,7 +348,7 @@ export default {
         case 'xg_employee':
         case 'customer':
           _self.searchLoading = true;
-          _self.list().then(res => {
+          _self.list().then((res) => {
             if (res) {
               _self.searchList = res.data;
               _self.searchList1 = res.data;
@@ -363,7 +364,7 @@ export default {
     //搜索框
     filter(val) {
       let search = [];
-      this.searchList1.map(item => {
+      this.searchList1.map((item) => {
         if (item.name.indexOf(val) > -1 || item.projectName.indexOf(val) > -1) {
           search.push(item);
         }
@@ -455,8 +456,8 @@ export default {
         return false;
       }
       //提交表单
-    }
-  }
+    },
+  },
 };
 </script>
 

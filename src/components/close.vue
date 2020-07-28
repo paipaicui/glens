@@ -78,7 +78,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
         <div v-if="searchList.length < 1 && searchLoading==false " class="block-btn-fixed" @click="addCompetition">新增
         </div>
         <van-cell-group>
@@ -110,7 +111,7 @@ export default {
       closeInfo: {
         date: formatDate.date('YYYY-mm-dd', new Date()),
         post: {},
-        why: 0
+        why: 0,
       },
       searchLoading: false,
       searchList: [],
@@ -119,43 +120,43 @@ export default {
       radio: [
         {
           value: 1,
-          label: '客户、专家不认可'
+          label: '客户、专家不认可',
         },
         {
           value: 2,
-          label: '业务能力无优势'
+          label: '业务能力无优势',
         },
         {
           value: 3,
-          label: '未参与前期工作'
+          label: '未参与前期工作',
         },
         {
           value: 4,
-          label: '业务内定'
+          label: '业务内定',
         },
         {
           value: 5,
-          label: '不满足招标文件要求'
+          label: '不满足招标文件要求',
         },
         {
           value: 6,
-          label: '营销策略失误'
+          label: '营销策略失误',
         },
         {
           value: 7,
-          label: '出现恶性竞争'
+          label: '出现恶性竞争',
         },
         {
           value: 8,
-          label: '其他原因'
-        }
-      ]
+          label: '其他原因',
+        },
+      ],
     };
   },
   watch: {
     searchKeyWords(val) {
       this.filter(val);
-    }
+    },
   },
   methods: {
     ...mapActions({ list: 'home1/getList' }),
@@ -173,7 +174,7 @@ export default {
     //搜索框
     filter(val) {
       this.searchLoading = true;
-      this.list().then(res => {
+      this.list().then((res) => {
         if (res) {
           this.searchList = res.data;
           this.searchLoading = false;
@@ -191,8 +192,8 @@ export default {
     },
     submit() {
       this.$emit('submit', this.closeInfo);
-    }
-  }
+    },
+  },
 };
 </script>
 

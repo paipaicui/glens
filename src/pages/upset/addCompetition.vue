@@ -93,7 +93,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
 
         <van-cell-group>
           <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
@@ -133,8 +134,8 @@ export default {
         advantage: '',
         inferiority: '',
         relevant: [],
-        remarks: ''
-      }
+        remarks: '',
+      },
     };
   },
   methods: {
@@ -159,7 +160,7 @@ export default {
       //此处根据done判断需要请求的接口
 
       _self.searchLoading = true;
-      _self.list().then(res => {
+      _self.list().then((res) => {
         if (res) {
           _self.searchList = res.data;
           _self.searchLoading = false;
@@ -172,8 +173,8 @@ export default {
     },
     remove(name, index) {
       this.form[name].splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
 

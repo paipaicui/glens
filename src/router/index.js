@@ -11,6 +11,7 @@ export default new Router({
       component: Home,
       children: [{
           path: "/home0",
+          name: 'home',
           meta: {
             title: "销售预期",
             keepAlive: false,
@@ -21,6 +22,7 @@ export default new Router({
         },
         {
           path: "/home1",
+          name: 'home',
           meta: {
             title: "升迁提示",
             keepAlive: false,
@@ -31,6 +33,7 @@ export default new Router({
         },
         {
           path: "/home2",
+          name: 'home',
           meta: {
             title: "推送信息",
             keepAlive: true,
@@ -41,6 +44,7 @@ export default new Router({
         },
         {
           path: "/home3",
+          name: 'home',
           meta: {
             title: "我的记录",
             keepAlive: true,
@@ -221,8 +225,51 @@ export default new Router({
       component: () =>
         import( /* webpackChunkName: "saleList" */ "../pages/sales/list.vue"),
     },
+    {
+      path: '/customer',
+      meta: {
+        title: "查找公共关系",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "customer" */ "../pages/customer/index.vue"),
+    },
+    {
+      path: '/flow',
+      name: 'flow',
+      meta: {
+        title: "流程审批",
+        keepAlive: true,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "flow" */ "../pages/flow/list.vue"),
+    },
+    {
+      path: '/report',
+      name: 'report',
+      meta: {
+        title: "报表中心",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "report" */ "../pages/report/index.vue"),
+    },
+    {
+      path: '/report/appraise',
+      meta: {
+        title: "营销工作评价报表",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "appraise" */ "../pages/report/appraise.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
+
     if (savedPosition) {
       return savedPosition;
     } else {
@@ -234,5 +281,6 @@ export default new Router({
         y: to.meta.savedPosition || 0
       };
     }
+
   }
 });

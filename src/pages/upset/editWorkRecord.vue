@@ -158,7 +158,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchEmpty && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchEmpty && searchLoading==false" description="暂无数据" />
         <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
           class="block-btn-fixed" @click="addCustomer">新增</div>
         <van-cell-group>
@@ -198,7 +199,7 @@ import { mapActions } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
-    jobType
+    jobType,
   },
 
   data() {
@@ -239,25 +240,25 @@ export default {
         department3: '苏交科华东综合管理部',
         gt_employee: [
           {
-            text: '黄军'
+            text: '黄军',
           },
           {
-            text: '张清华'
-          }
+            text: '张清华',
+          },
         ],
         customer: [
           {
-            text: '唐纯'
-          }
+            text: '唐纯',
+          },
         ],
-        result: '白改黑项目，拟采用Epc模式'
-      }
+        result: '白改黑项目，拟采用Epc模式',
+      },
     };
   },
   watch: {
     searchKeyWords(val) {
       this.filter(val);
-    }
+    },
   },
   methods: {
     ...mapActions({ list: 'home1/getList' }),
@@ -270,7 +271,7 @@ export default {
       this.searchTips = tips;
 
       //此处根据done判断需要请求的接口
-      this.list().then(res => {
+      this.list().then((res) => {
         if (res) {
           _self.searchList = res.data;
           _self.searchList1 = res.data;
@@ -280,7 +281,7 @@ export default {
     //搜索框
     filter(val) {
       let search = [];
-      this.searchList1.map(item => {
+      this.searchList1.map((item) => {
         if (item.name.indexOf(val) > -1 || item.projectName.indexOf(val) > -1) {
           search.push(item);
         }
@@ -342,7 +343,7 @@ export default {
       //   default:
       //     break;
       // }
-      this.list().then(res => {
+      this.list().then((res) => {
         if (res) {
           _self.searchPageList = res.data;
         }
@@ -398,8 +399,8 @@ export default {
         return false;
       }
       //提交表单
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -68,10 +68,16 @@ export default {
         time: '2020-09-01',
         cost: '',
         salesDirector: '',
-        salesPost: ''
-      }
+        salesPost: '',
+      },
     };
-  }
+  },
+
+  methods: {
+    makeSure() {
+      console.log('tijiao');
+    },
+  },
 };
 </script>
 

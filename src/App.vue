@@ -2,11 +2,11 @@
   <div id="app">
     <transition :name="transitionName">
       <div>
-        <router-view></router-view>
-        <!-- <keep-alive>
+        <!-- <router-view></router-view> -->
+        <keep-alive>
           <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
       </div>
 
     </transition>
@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      transitionName: ''
+      transitionName: '',
     };
   },
   watch: {
@@ -33,8 +33,14 @@ export default {
       } else if (to.meta.index < from.meta.index) {
         this.transitionName = 'slide-right';
       }
-    }
-  }
+
+      if (from.name == 'home' && to.name == 'flow') {
+        this.$route.meta.keepAlive = false;
+      } else {
+        this.$route.meta.keepAlive = true;
+      }
+    },
+  },
 };
 </script>
 <style>

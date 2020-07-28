@@ -10,7 +10,7 @@
         </template>
       </van-nav-bar>
       <van-overlay :show="modalShow" @click="modalShow = false">
-        <div class="wrapper" >
+        <div class="wrapper">
           <div class="menu-list">
             <ul>
               <li v-for="(item,key) in menuList" :key="key" @click="go(item.link)">
@@ -52,51 +52,51 @@ export default {
         {
           href: '/saleList',
           class: 'menu-icon1',
-          text: '销售任务'
+          text: '销售任务',
         },
         {
-          href: '',
+          href: '/customer',
           class: 'menu-icon2',
-          text: '客户'
+          text: '客户',
         },
         {
-          href: '',
+          href: '/flow',
           class: 'menu-icon3',
-          text: '流程审批'
+          text: '流程审批',
         },
         {
-          href: '',
+          href: '/report',
           class: 'menu-icon4',
-          text: '报表'
-        }
+          text: '报表',
+        },
       ],
       menuList: [
         {
           text: '工作记录',
           icon: require('@/assets/images/Icon/ic_popupmenu_work_record.png'),
-          link: '/addWorkRecord'
+          link: '/addWorkRecord',
         },
         {
           text: '销售任务',
           icon: require('@/assets/images/Icon/ic_popupmenu_sales_task.png'),
-          link: '/addSale'
+          link: '/addSale',
         },
         {
           text: '公共关系',
           icon: require('@/assets/images/Icon/ic_popupmenu_public_relations.png'),
-          link: '/publicRelations'
+          link: '/publicRelations',
         },
         {
           text: '客户',
           icon: require('@/assets/images/Icon/ic_popupmenu_client.png'),
-          link: '/addCustomer'
+          link: '/addCustomer',
         },
         {
           text: '联系人',
           icon: require('@/assets/images/Icon/ic_popupmenu_contact.png'),
-          link: '/addCustomerConcat'
-        }
-      ]
+          link: '/addCustomerConcat',
+        },
+      ],
     };
   },
   mounted() {
@@ -112,8 +112,8 @@ export default {
     go(link) {
       this.modalShow = false;
       this.$router.push({ path: link });
-    }
-  }
+    },
+  },
 };
 </script>
 

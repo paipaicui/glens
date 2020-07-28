@@ -155,7 +155,8 @@
         </div>
         <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
           加载中...</van-loading>
-        <van-empty v-if="searchEmpty && searchLoading==false" description="暂无数据" />
+        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+          v-if="searchEmpty && searchLoading==false" description="暂无数据" />
         <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
           class="block-btn-fixed" @click="addCustomer">新增</div>
         <van-cell-group>
@@ -195,7 +196,7 @@ import { mapActions } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
-    jobType
+    jobType,
   },
 
   data() {
@@ -236,26 +237,26 @@ export default {
         department3: '苏交科华东综合管理部',
         gt_employee: [
           {
-            text: '黄军'
+            text: '黄军',
           },
           {
-            text: '张清华'
-          }
+            text: '张清华',
+          },
         ],
         customer: [
           {
-            text: '唐纯'
-          }
+            text: '唐纯',
+          },
         ],
-        result: '白改黑项目，拟采用Epc模式'
-      }
+        result: '白改黑项目，拟采用Epc模式',
+      },
     };
   },
   watch: {},
   methods: {
-    ...mapActions({ list: 'home1/getList' })
+    ...mapActions({ list: 'home1/getList' }),
     //点开搜索页面
-  }
+  },
 };
 </script>
 
