@@ -7,16 +7,18 @@
         </template>
       </van-nav-bar>
     </div>
-    <van-cell-group>
-      <van-cell v-for="(item,key) in list" :key="key" @click="getIndex(item)">
-        <template #title>
-          <div class="fixed">
-            <img v-if="item.image" class="img-icon" v-bind:src="item.image" />
-            <span>{{item.text}}</span>
-          </div>
-        </template>
-      </van-cell>
-    </van-cell-group>
+    <div class="page-scroll">
+      <van-cell-group>
+        <van-cell v-for="(item,key) in list" :key="key" @click="getIndex(item)">
+          <template #title>
+            <div class="fixed">
+              <img v-if="item.image" class="img-icon" v-bind:src="item.image" />
+              <span>{{item.text}}</span>
+            </div>
+          </template>
+        </van-cell>
+      </van-cell-group>
+    </div>
   </div>
 </template>
 
@@ -24,28 +26,28 @@
 export default {
   data() {
     return {
-      search: ''
+      search: "",
     };
   },
   props: {
     title: {
       type: String,
-      default: 'search'
+      default: "search",
     },
     list: {
       type: Array,
-      default: []
-    }
+      default: [],
+    },
   },
   mounted() {},
   methods: {
     back() {
-      this.$emit('close');
+      this.$emit("close");
     },
     getIndex(val) {
-      this.$emit('choose', val);
-    }
-  }
+      this.$emit("choose", val);
+    },
+  },
 };
 </script>
 

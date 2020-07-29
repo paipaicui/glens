@@ -241,7 +241,7 @@
 
     <!-- 选择工作类型 -->
     <van-popup v-model="isShowType" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; ">
         <job-type :list="workType" title="请选择工作类型" @choose="chosseWorkType" @close="isShowType = false"></job-type>
       </div>
     </van-popup>

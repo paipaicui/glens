@@ -74,7 +74,7 @@
     </div>
     <!-- 搜索列表 -->
     <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; ">
         <div class="search-height">
           <div class="search-height-content">
             <van-nav-bar :title="searchTitle" left-arrow>
@@ -91,22 +91,24 @@
           </div>
 
         </div>
-        <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
-          加载中...</van-loading>
-        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
-          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
+        <div class="search-list">
+          <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
+            加载中...</van-loading>
+          <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+            v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
 
-        <van-cell-group>
-          <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
-            <template #title>
-              <van-row>
-                <van-col span="12">{{ item.name }}</van-col>
-                <van-col span="12" class="text-right">{{ item.id }}</van-col>
-              </van-row>
-            </template>
-            <template #label>{{ item.projectName }}</template>
-          </van-cell>
-        </van-cell-group>
+          <van-cell-group>
+            <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
+              <template #title>
+                <van-row>
+                  <van-col span="12">{{ item.name }}</van-col>
+                  <van-col span="12" class="text-right">{{ item.id }}</van-col>
+                </van-row>
+              </template>
+              <template #label>{{ item.projectName }}</template>
+            </van-cell>
+          </van-cell-group>
+        </div>
       </div>
     </van-popup>
   </div>

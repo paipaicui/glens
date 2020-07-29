@@ -248,7 +248,7 @@ export default new Router({
     },
     {
       path: '/report',
-      name: 'report',
+      name:'home',
       meta: {
         title: "报表中心",
         keepAlive: false,
@@ -259,9 +259,10 @@ export default new Router({
     },
     {
       path: '/report/appraise',
+      name:'flow',
       meta: {
         title: "营销工作评价报表",
-        keepAlive: false,
+        keepAlive: true,
         index: 0
       },
       component: () =>
@@ -278,6 +279,16 @@ export default new Router({
         import( /* webpackChunkName: "report" */ "../pages/report/report.vue"),
     },
     {
+      path: '/report/saleReport',
+      meta: {
+        title: "营销人员工作报表",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "report" */ "../pages/report/saleReport.vue"),
+    },
+    {
       path: '/report/sale',
       meta: {
         title: "销售任务",
@@ -287,9 +298,18 @@ export default new Router({
       component: () =>
         import( /* webpackChunkName: "sale" */ "../pages/report/sale.vue"),
     },
+    {
+      path: '/report/personReport',
+      meta: {
+        title: "报价明细",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "personReport" */ "../pages/report/personReport.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
-
     if (savedPosition) {
       return savedPosition;
     } else {

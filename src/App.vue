@@ -36,7 +36,7 @@ export default {
 
       if (from.name == 'home' && to.name == 'flow') {
         this.$route.meta.keepAlive = false;
-      } else {
+      } else  {
         this.$route.meta.keepAlive = true;
       }
     },

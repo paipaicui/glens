@@ -5,12 +5,6 @@
         <template #left>
           <span @click="$router.go(-1)" class="icon back"></span>
         </template>
-        <template #right>
-          <div class="block">
-            <span :class="tabActive==0?'tabIcon ranking':'tabIcon rank'" @click="tab(0)"></span>
-            <span :class="tabActive==1?'tabIcon listing':'tabIcon list'" @click="tab(1)"></span>
-          </div>
-        </template>
       </van-nav-bar>
     </div>
     <div class="select">
@@ -24,116 +18,22 @@
       </van-row>
     </div>
 
-    <div v-if="tabActive==0">
-      <van-row gutter="20" class="white-block">
-        <van-col span="12" class="flex">
-          <p><span class="up"></span>最高分 环比：<span class="font-blue">-0</span></p>
-          <div class="text-center">张杰宝：80分</div>
-          <div class="text-center font-blue margin-t">前5名</div>
-          <div class="text-center">
-            <img src="../../assets/images/Icon/pic_arrow_big_left.png" alt="" srcset="">
-          </div>
-        </van-col>
-        <van-col span="12" class="flex">
-          <p><span class="down"></span>最高分 环比：<span class="font-red"><i class="arrow-bottom"></i>18</span></p>
-          <div class="text-center">张杰宝：80分</div>
-          <div class="text-center font-red margin-t">后5名</div>
-          <div class="text-center">
-            <img src="../../assets/images/Icon/pic_arrow_big_right.png" alt="" srcset="">
-          </div>
-        </van-col>
-      </van-row>
-
-      <div ref="chart" style="height:280px" class="white-block"></div>
-
-      <div class="white-block">
-        <van-divider>得分明细<span class=" font-blue">(樊苑玉)</span></van-divider>
-        <p class="title2">轨道交通设计院院长室</p>
-      </div>
-
-      <div ref="radarChart" style="height:280px" class="white-block"></div>
-
-      <div class="white-block">
-        <van-divider>近半年得分<span class=" font-blue">(樊苑玉)</span></van-divider>
-        <div class="appraise-table-box">
-          <table>
-            <tr>
-              <th>月份/分项</th>
-              <th>20.01</th>
-              <th>20.02</th>
-              <th>20.03</th>
-              <th>20.04</th>
-              <th>20.05</th>
-              <th>20.06</th>
-            </tr>
-            <tr>
-              <td>公共关系</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>销售任务</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>新客户开拓</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>客户需求和机会</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>总分</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </table>
-        </div>
-
-      </div>
-    </div>
-
-    <div v-if="tabActive==1">
+ 
       <van-search v-model="value" placeholder="请输入姓名或者部门" @search="onSearch" />
       <van-cell v-for="(item,key) in 10" :key="key" class="list-cell">
         <template #title>
-          <router-link to="/report/personReport?id=1">
+          <router-link to="/report/report?id=1">
             <van-row>
-              <van-col span="12"><span class="font9">姓名：</span><span class="font3 font16">张杰宝</span></van-col>
-              <van-col span="12" class="text-right font9"><span class="font-blue font24">80</span>分</van-col>
-              <van-col span="12"><span class="font9">公共关系：</span><span class="font-blue font16">25</span></van-col>
-              <van-col span="12"><span class="font9">销售任务：</span><span class="font-blue font16">25</span></van-col>
-              <van-col span="12"><span class="font9">新客户开拓：</span><span class="font-blue font16">5</span></van-col>
-              <van-col span="12"><span class="font9">客户需求和机会：</span><span class="font-blue font16">25</span></van-col>
+              <van-col span="8"><span class="font3 font16">张杰宝</span></van-col>
+              <van-col span="16"><span class="font9">交通规划设计院华东院院长室</span></van-col>
+              <van-col span="8"><span class="font9">销售任务：</span><span class="font3 font16">25</span></van-col>
+              <van-col span="8"><span class="font9">公共关系：</span><span class="font3 font16">5</span></van-col>
+              <van-col span="8"><span class="font9">记录总数：</span><span class="font3 font16">25</span></van-col>
             </van-row>
           </router-link>
         </template>
       </van-cell>
-    </div>
+ 
 
  
     <van-popup v-model="showPickerdate1" position="bottom">
@@ -160,8 +60,7 @@ import echarts from 'echarts';
 export default {
   data() {
     return {
-      title: '营销工作评价报表',
-      tabActive: 0,
+      title: '营销人员工作报表',
       value: '',
       showPickerdate1:false,
       showSelect:false,
@@ -183,22 +82,8 @@ export default {
       this.drawPieRadar();
     });
   },
-  watch: {
-    tabActive(val) {
-      let _this = this;
-      if(val == 0){
-        this.$nextTick(function () {
-          _this.drawPie();
-          _this.drawPieRadar();
-        });
-      }
-    }
-  },
+
   methods: {
-    tab(val) {
-      this.tabActive = val;
-      document.body.scrollTop=document.documentElement.scrollTop=0;
-    },
     drawPie() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = echarts.init(this.$refs.chart);
@@ -563,9 +448,10 @@ export default {
   }
 }
 .list-cell {
-  padding: 16px;
-  .van-col--12 {
-    margin-bottom: 0.08rem;
+  padding: 0.08rem .16rem;
+  .van-col--8,
+  .van-col--16  {
+    margin: 0.08rem 0;
   }
 }
 .flex-block{

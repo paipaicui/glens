@@ -29,7 +29,7 @@
 
     <!-- 搜索列表 -->
     <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; ">
         <job-type v-if="isShowSearch" :list="searchList" :title="sarchTitle" @choose="chooseSearch" @close="close">
         </job-type>
       </div>

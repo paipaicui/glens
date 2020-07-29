@@ -135,7 +135,7 @@
 
     <!-- 搜索列表 -->
     <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; ">
         <div class="search-height">
           <div class="search-height-content">
             <van-nav-bar :title="searchTitle" left-arrow>
@@ -156,23 +156,25 @@
           </div>
 
         </div>
-        <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
-          加载中...</van-loading>
-        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
-          v-if="searchEmpty && searchLoading==false" description="暂无数据" />
-        <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
-          class="block-btn-fixed" @click="addCustomer">新增</div>
-        <van-cell-group>
-          <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
-            <template #title>
-              <van-row>
-                <van-col span="12">{{ item.name }}</van-col>
-                <van-col span="12" class="text-right">{{ item.id }}</van-col>
-              </van-row>
-            </template>
-            <template #label>{{ item.projectName }}</template>
-          </van-cell>
-        </van-cell-group>
+        <div class="search-list">
+          <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
+            加载中...</van-loading>
+          <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
+            v-if="searchEmpty && searchLoading==false" description="暂无数据" />
+          <div v-if="(searchList.length < 1 || searchEmpty)&& searchLoading==false && currentPage=='relations'"
+            class="block-btn-fixed" @click="addCustomer">新增</div>
+          <van-cell-group>
+            <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
+              <template #title>
+                <van-row>
+                  <van-col span="12">{{ item.name }}</van-col>
+                  <van-col span="12" class="text-right">{{ item.id }}</van-col>
+                </van-row>
+              </template>
+              <template #label>{{ item.projectName }}</template>
+            </van-cell>
+          </van-cell-group>
+        </div>
       </div>
     </van-popup>
     <!-- 开始时间 -->
@@ -183,7 +185,7 @@
 
     <!-- 选择弹出页面 -->
     <van-popup v-model="isShowSearchPage" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh; ">
         <job-type :list="searchPageList" :title="searchTitle" @choose="chooseSearchPage"
           @close="isShowSearchPage = false">
         </job-type>

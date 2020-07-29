@@ -607,14 +607,17 @@ textarea {
 
 .search-height {
     height: 2.14rem;
+    width: 100%;
+    background: #f8f8f8;
 
-    .search-height-content {
-        position: fixed;
-        z-index: 1;
-        width: 100%;
-        height: 2.14rem;
-        background: #f8f8f8;
-    }
+}
+.search-list{
+    height: calc(100vh - 2.14rem);
+    overflow-y: scroll;
+}
+.page-scroll{
+    height: calc(100vh - .44rem);
+    overflow-y: scroll;
 }
 
 //addwork

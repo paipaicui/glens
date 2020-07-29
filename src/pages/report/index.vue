@@ -15,7 +15,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/report/report" class="report">
+          <router-link to="/report/saleReport" class="report">
             营销工作报表
           </router-link>
         </li>

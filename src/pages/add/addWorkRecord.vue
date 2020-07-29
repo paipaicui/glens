@@ -18,18 +18,52 @@
           </template>
         </van-cell>
 
-        <van-field class="picker" v-model="form.pr" required readonly rows="1"
-          @click="showSearchBox('pr','查找销售任务','输入任务名称进行过滤')" autosize label="任务名称" type="textarea"
-          placeholder="请选择任务" />
+        <van-field
+          class="picker"
+          v-model="form.pr"
+          required
+          readonly
+          rows="1"
+          @click="showSearchBox('pr','查找销售任务','输入任务名称进行过滤')"
+          autosize
+          label="任务名称"
+          type="textarea"
+          placeholder="请选择任务"
+        />
 
-        <van-field class="picker" readonly required v-model="form.startDate" label="开始日期" placeholder="请选择开始日期"
-          @click="showPickerdate1 = true" />
+        <van-field
+          class="picker"
+          readonly
+          required
+          v-model="form.startDate"
+          label="开始日期"
+          placeholder="请选择开始日期"
+          @click="showPickerdate1 = true"
+        />
 
-        <van-field class="picker" readonly required v-model="form.endDate" label="结束日期" placeholder="请选择结束日期"
-          @click="showPickerdate2 = true" />
+        <van-field
+          class="picker"
+          readonly
+          required
+          v-model="form.endDate"
+          label="结束日期"
+          placeholder="请选择结束日期"
+          @click="showPickerdate2 = true"
+        />
 
-        <van-field class="picker" v-model="form.state" required readonly rows="1" clickable autosize label="工作类型"
-          type="textarea" placeholder="请选择任务" @click="isShowType = true" />
+        <van-field
+          class="picker"
+          v-model="form.state"
+          required
+          readonly
+          rows="1"
+          clickable
+          autosize
+          label="工作类型"
+          type="textarea"
+          placeholder="请选择任务"
+          @click="isShowType = true"
+        />
       </van-cell-group>
       <!-- 沟通员工 -->
       <van-cell-group>
@@ -47,7 +81,8 @@
         <van-cell v-for="(item,key) in form.gt_employee" :key="key">
           <template #title>
             <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
+              <span class="icon-client-grey icon"></span>
+              {{item.projectName}}
             </h4>
           </template>
           <template #right-icon>
@@ -73,7 +108,8 @@
         <van-cell v-for="(item,key) in form.xg_employee" :key="key">
           <template #title>
             <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
+              <span class="icon-client-grey icon"></span>
+              {{item.projectName}}
             </h4>
           </template>
           <template #right-icon>
@@ -91,14 +127,18 @@
             </h4>
           </template>
           <template #right-icon>
-            <span class="icon-add" @click="showSearchBox('customer','查找客户联系人','输入客户联系人姓名(精确查找)')">点击添加</span>
+            <span
+              class="icon-add"
+              @click="showSearchBox('customer','查找客户联系人','输入客户联系人姓名(精确查找)')"
+            >点击添加</span>
           </template>
         </van-cell>
 
         <van-cell v-for="(item,key) in form.customer" :key="key">
           <template #title>
             <h4 class="cell-title font6 thin">
-              <span class="icon-client-grey icon"></span>{{item.projectName}}
+              <span class="icon-client-grey icon"></span>
+              {{item.projectName}}
             </h4>
           </template>
           <template #right-icon>
@@ -197,8 +237,14 @@
     </div>
 
     <!-- 搜索列表 -->
-    <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+    <van-popup
+      v-model="isShowSearch"
+      position="right"
+      duration=".1"
+      :overlay="false"
+      :style="{ width: '100%' }"
+    >
+      <div style="height: 100vh">
         <div class="search-height">
           <div class="search-height-content">
             <van-nav-bar :title="searchTitle" left-arrow>
@@ -209,7 +255,6 @@
               <template #right v-if="currentPage=='customer'">
                 <span class="icon add" @click="addCustomer"></span>
               </template>
-
             </van-nav-bar>
             <div class="search-box">
               <span class="searchBig"></span>
@@ -217,50 +262,83 @@
               <van-search v-model="searchKeyWords" placeholder="请输入搜索关键词" />
             </div>
           </div>
-
         </div>
-        <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
-          加载中...</van-loading>
-        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
-          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
-        <div v-if="searchList.length < 1 && searchLoading==false && currentPage=='customer'" class="block-btn-fixed"
-          @click="addCustomer">新增</div>
-        <van-cell-group>
-          <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
-            <template #title>
-              <van-row>
-                <van-col span="12">{{ item.name }}</van-col>
-                <van-col span="12" class="text-right">{{ item.id }}</van-col>
-              </van-row>
-            </template>
-            <template #label>{{ item.projectName }}</template>
-          </van-cell>
-        </van-cell-group>
+        <div class="search-list">
+          <van-loading
+            v-if="searchLoading==true"
+            size="24px"
+            vertical
+            style="padding-top:2rem"
+          >加载中...</van-loading>
+          <van-empty
+            :image="require('@/assets/images/Icon/pic_default_graph.png')"
+            v-if="searchList.length < 1 && searchLoading==false"
+            description="暂无数据"
+          />
+          <div
+            v-if="searchList.length < 1 && searchLoading==false && currentPage=='customer'"
+            class="block-btn-fixed"
+            @click="addCustomer"
+          >新增</div>
+          <van-cell-group>
+            <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
+              <template #title>
+                <van-row>
+                  <van-col span="12">{{ item.name }}</van-col>
+                  <van-col span="12" class="text-right">{{ item.id }}</van-col>
+                </van-row>
+              </template>
+              <template #label>{{ item.projectName }}</template>
+            </van-cell>
+          </van-cell-group>
+        </div>
       </div>
     </van-popup>
     <!-- 开始时间 -->
     <van-popup v-model="showPickerdate1" position="bottom">
-      <van-datetime-picker @cancel="showPickerdate1 = false" @confirm="confirmStartDate" v-model="startDate"
-        type="date" />
+      <van-datetime-picker
+        @cancel="showPickerdate1 = false"
+        @confirm="confirmStartDate"
+        v-model="startDate"
+        type="date"
+      />
     </van-popup>
     <!-- 结束时间 -->
     <van-popup v-model="showPickerdate2" position="bottom">
-      <van-datetime-picker @cancel="showPickerdate2 = false" @confirm="confirmEndDate" v-model="endDate" type="date" />
+      <van-datetime-picker
+        @cancel="showPickerdate2 = false"
+        @confirm="confirmEndDate"
+        v-model="endDate"
+        type="date"
+      />
     </van-popup>
     <!-- 选择工作类型 -->
-    <van-popup v-model="isShowType" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
-        <job-type :list="workType" title="请选择工作类型" @choose="chosseWorkType" @close="isShowType = false"></job-type>
+    <van-popup
+      v-model="isShowType"
+      position="right"
+      duration=".1"
+      :overlay="false"
+      :style="{ width: '100%' }"
+    >
+      <div style="height: 100vh;">
+        <div class="page-scroll">
+          <job-type
+            :list="workType"
+            title="请选择工作类型"
+            @choose="chosseWorkType"
+            @close="isShowType = false"
+          ></job-type>
+        </div>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
-import jobType from '@/components/jobType';
-import formatDate from '@/assets/js/date.js';
-import { mapActions } from 'vuex';
-import { Toast } from 'vant';
+import jobType from "@/components/jobType";
+import formatDate from "@/assets/js/date.js";
+import { mapActions } from "vuex";
+import { Toast } from "vant";
 export default {
   components: {
     jobType,
@@ -268,59 +346,59 @@ export default {
 
   data() {
     return {
-      title: '新增销售任务-工作记录',
+      title: "新增销售任务-工作记录",
       showPickerdate1: false,
       showPickerdate2: false,
       isShowType: false,
       isShowSearch: false,
       workType: [
         {
-          text: '拜访接待',
-          image: require('@/assets/images/Icon/ic_job_visit.png'),
+          text: "拜访接待",
+          image: require("@/assets/images/Icon/ic_job_visit.png"),
         },
         {
-          text: '会议沟通',
-          image: require('@/assets/images/Icon/ic_job_meeting.png'),
+          text: "会议沟通",
+          image: require("@/assets/images/Icon/ic_job_meeting.png"),
         },
         {
-          text: '电话联系',
-          image: require('@/assets/images/Icon/ic_job_phone.png'),
+          text: "电话联系",
+          image: require("@/assets/images/Icon/ic_job_phone.png"),
         },
         {
-          text: '邮件联系',
-          image: require('@/assets/images/Icon/ic_job_mail.png'),
+          text: "邮件联系",
+          image: require("@/assets/images/Icon/ic_job_mail.png"),
         },
         {
-          text: '回访记录',
-          image: require('@/assets/images/Icon/ic_job_return_visit.png'),
+          text: "回访记录",
+          image: require("@/assets/images/Icon/ic_job_return_visit.png"),
         },
       ],
       minDate: new Date(2020, 0, 1),
       maxDate: new Date(2025, 10, 1),
       startDate: new Date(),
       endDate: new Date(),
-      searchTitle: '',
-      searchTips: '',
+      searchTitle: "",
+      searchTips: "",
       searchList: [],
       searchList1: [],
-      currentPage: '',
-      searchKeyWords: '',
+      currentPage: "",
+      searchKeyWords: "",
       searchLoading: false,
       form: {
-        pr: '',
-        startDate: '',
-        endDate: '',
-        state: '',
+        pr: "",
+        startDate: "",
+        endDate: "",
+        state: "",
         gt_employee: [],
         xg_employee: [],
         customer: [],
-        goutong: '',
-        result: '',
-        need: '',
-        packMsg: '',
-        chance: '',
-        back: '',
-        other: '',
+        goutong: "",
+        result: "",
+        need: "",
+        packMsg: "",
+        chance: "",
+        back: "",
+        other: "",
       },
     };
   },
@@ -330,7 +408,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions({ list: 'home1/getList' }),
+    ...mapActions({ list: "home1/getList" }),
     //点开搜索页面
     showSearchBox(done, title, tips) {
       let _self = this;
@@ -341,12 +419,12 @@ export default {
 
       //此处根据done判断需要请求的接口
       switch (done) {
-        case 'pr':
+        case "pr":
           break;
 
-        case 'gt_employee':
-        case 'xg_employee':
-        case 'customer':
+        case "gt_employee":
+        case "xg_employee":
+        case "customer":
           _self.searchLoading = true;
           _self.list().then((res) => {
             if (res) {
@@ -374,13 +452,13 @@ export default {
     //选择当前搜索值
     chooseSearch(val) {
       switch (this.currentPage) {
-        case 'pr':
+        case "pr":
           this.form[this.currentPage] = val.projectName;
           break;
 
-        case 'gt_employee':
-        case 'xg_employee':
-        case 'customer':
+        case "gt_employee":
+        case "xg_employee":
+        case "customer":
           this.form[this.currentPage].push(val);
           break;
 
@@ -394,17 +472,17 @@ export default {
     },
     close() {
       this.isShowSearch = false;
-      this.searchKeyWords = '';
-      this.searchTitle = '';
-      this.searchTips = '';
+      this.searchKeyWords = "";
+      this.searchTitle = "";
+      this.searchTips = "";
       this.searchList = [];
     },
     confirmStartDate(val) {
-      this.form.startDate = formatDate.date('YYYY-mm-dd', val);
+      this.form.startDate = formatDate.date("YYYY-mm-dd", val);
       this.showPickerdate1 = false;
     },
     confirmEndDate(val) {
-      this.form.endDate = formatDate.date('YYYY-mm-dd', val);
+      this.form.endDate = formatDate.date("YYYY-mm-dd", val);
       this.showPickerdate2 = false;
     },
     chosseWorkType(val) {
@@ -412,47 +490,47 @@ export default {
       this.isShowType = false;
     },
     addCustomer() {
-      this.$router.push({ path: '/addCustomerConcat' });
+      this.$router.push({ path: "/addCustomerConcat" });
     },
     makeSure() {
       if (!this.form.pr) {
-        Toast('请选择任务');
+        Toast("请选择任务");
         return false;
       }
       if (!this.form.startDate) {
-        Toast('请选择开始时间');
+        Toast("请选择开始时间");
         return false;
       }
       if (!this.form.endDate) {
-        Toast('请选择结束时间');
+        Toast("请选择结束时间");
         return false;
       }
       if (this.form.gt_employee.length == 0) {
-        Toast('请选择沟通员工');
+        Toast("请选择沟通员工");
         return false;
       }
       if (this.form.customer.length == 0) {
-        Toast('请选择客户联系人');
+        Toast("请选择客户联系人");
         return false;
       }
       if (!this.form.goutong.trim()) {
-        Toast('请输入沟通是由');
+        Toast("请输入沟通是由");
         return false;
       }
       if (!this.form.result.trim()) {
-        Toast('请输入沟通结果');
+        Toast("请输入沟通结果");
         return false;
       }
       if (!this.form.need.trim()) {
-        Toast('请输入近期客户痛点、需求');
+        Toast("请输入近期客户痛点、需求");
         return false;
       }
       if (!this.form.need.trim()) {
-        Toast('请输入近期发包项目信息');
+        Toast("请输入近期发包项目信息");
         return false;
       }
       if (!this.form.chance.trim()) {
-        Toast('请输入客户机会信息');
+        Toast("请输入客户机会信息");
         return false;
       }
       //提交表单

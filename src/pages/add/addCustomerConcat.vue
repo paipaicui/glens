@@ -12,9 +12,7 @@
       <van-cell-group>
         <van-cell>
           <template #title>
-            <h4 class="cell-title thin">
-              基本信息
-            </h4>
+            <h4 class="cell-title thin">基本信息</h4>
           </template>
         </van-cell>
         <van-field v-model="form.name" required name="姓名" label="姓名" placeholder="请输入姓名" />
@@ -38,12 +36,34 @@
         <van-field v-model="form.post" required name="职务" label="职务" placeholder="请输入职务" />
         <van-field v-model="form.customer" name="客户" label="客户" placeholder="请输入客户" />
 
-        <van-field v-model="form.maintainer" readonly class="picker" required name="维护人" label="维护人"
-          placeholder="请选择维护人" @click="showSearchBox('maintainer','查找维护人','输入维护人姓名或id')" />
-        <van-field v-model="form.maintainDepartment" readonly class="picker" name="维护部门" label="维护部门"
-          placeholder="请选择维护部门" @click="showSearchBox('maintainDepartment','查找维护部门','输入维护部门查询')" />
-        <van-field v-model="form.superior" readonly class="picker" name="直接上级" label="直接上级" placeholder="请选择直接上级"
-          @click="showSearchBox('superior','查找直接上级','输入直接上级查询')" />
+        <van-field
+          v-model="form.maintainer"
+          readonly
+          class="picker"
+          required
+          name="维护人"
+          label="维护人"
+          placeholder="请选择维护人"
+          @click="showSearchBox('maintainer','查找维护人','输入维护人姓名或id')"
+        />
+        <van-field
+          v-model="form.maintainDepartment"
+          readonly
+          class="picker"
+          name="维护部门"
+          label="维护部门"
+          placeholder="请选择维护部门"
+          @click="showSearchBox('maintainDepartment','查找维护部门','输入维护部门查询')"
+        />
+        <van-field
+          v-model="form.superior"
+          readonly
+          class="picker"
+          name="直接上级"
+          label="直接上级"
+          placeholder="请选择直接上级"
+          @click="showSearchBox('superior','查找直接上级','输入直接上级查询')"
+        />
 
         <van-field v-model="form.tel" required name="办公电话" label="办公电话" placeholder="请输入办公电话" />
         <van-field v-model="form.mobile" required name="移动电话" label="移动电话" placeholder="请输入移动电话" />
@@ -53,9 +73,7 @@
       <van-cell-group>
         <van-cell>
           <template #title>
-            <h4 class="cell-title thin">
-              简历信息
-            </h4>
+            <h4 class="cell-title thin">简历信息</h4>
           </template>
         </van-cell>
         <van-field v-model="form.school" name="毕业院校" label="毕业院校" placeholder="请输入毕业院校" />
@@ -68,8 +86,14 @@
     </div>
 
     <!-- 搜索列表 -->
-    <van-popup v-model="isShowSearch" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+    <van-popup
+      v-model="isShowSearch"
+      position="right"
+      duration=".1"
+      :overlay="false"
+      :style="{ width: '100%' }"
+    >
+      <div style="height: 100vh; ">
         <div class="search-height">
           <div class="search-height-content">
             <van-nav-bar :title="searchTitle" left-arrow>
@@ -80,7 +104,6 @@
               <template #right v-if="currentPage=='customer'">
                 <span class="icon add" @click="addCustomer"></span>
               </template>
-
             </van-nav-bar>
             <div class="search-box">
               <span class="searchBig"></span>
@@ -88,62 +111,70 @@
               <van-search v-model="searchKeyWords" placeholder="请输入搜索关键词" />
             </div>
           </div>
-
         </div>
-        <van-loading v-if="searchLoading==true" size="24px" vertical style="padding-top:2rem">
-          加载中...</van-loading>
-        <van-empty :image="require('@/assets/images/Icon/pic_default_graph.png')"
-          v-if="searchList.length < 1 && searchLoading==false" description="暂无数据" />
+        <div class="search-list">
+          <van-loading
+            v-if="searchLoading==true"
+            size="24px"
+            vertical
+            style="padding-top:2rem"
+          >加载中...</van-loading>
+          <van-empty
+            :image="require('@/assets/images/Icon/pic_default_graph.png')"
+            v-if="searchList.length < 1 && searchLoading==false"
+            description="暂无数据"
+          />
 
-        <van-cell-group>
-          <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
-            <template #title>
-              <van-row>
-                <van-col span="12">{{ item.name }}</van-col>
-                <van-col span="12" class="text-right">{{ item.id }}</van-col>
-              </van-row>
-            </template>
-            <template #label>{{ item.projectName }}</template>
-          </van-cell>
-        </van-cell-group>
+          <van-cell-group>
+            <van-cell v-for="(item, key) in searchList" :key="key" @click="chooseSearch(item)">
+              <template #title>
+                <van-row>
+                  <van-col span="12">{{ item.name }}</van-col>
+                  <van-col span="12" class="text-right">{{ item.id }}</van-col>
+                </van-row>
+              </template>
+              <template #label>{{ item.projectName }}</template>
+            </van-cell>
+          </van-cell-group>
+        </div>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import { Toast } from 'vant';
+import { mapActions } from "vuex";
+import { Toast } from "vant";
 export default {
   data() {
     return {
-      title: '创建客户联系人',
+      title: "创建客户联系人",
 
       isShowSearch: false,
-      searchTitle: '',
-      searchTips: '',
+      searchTitle: "",
+      searchTips: "",
       searchList: [],
       searchList1: [],
-      currentPage: '',
-      searchKeyWords: '',
+      currentPage: "",
+      searchKeyWords: "",
       searchLoading: true,
 
       form: {
-        name: '',
-        sex: 'male',
-        department: '',
-        post: '',
-        customer: '',
-        maintainer: '',
-        maintainDepartment: '',
-        superior: '',
-        tel: '',
-        mobile: '',
-        address: '',
-        school: '',
-        graduation: '',
-        major: '',
-        nativePlace: '',
+        name: "",
+        sex: "male",
+        department: "",
+        post: "",
+        customer: "",
+        maintainer: "",
+        maintainDepartment: "",
+        superior: "",
+        tel: "",
+        mobile: "",
+        address: "",
+        school: "",
+        graduation: "",
+        major: "",
+        nativePlace: "",
       },
     };
   },
@@ -153,7 +184,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions({ list: 'home1/getList' }),
+    ...mapActions({ list: "home1/getList" }),
     //点开搜索页面
     showSearchBox(done, title, tips) {
       let _self = this;
@@ -189,51 +220,51 @@ export default {
     },
     close() {
       this.isShowSearch = false;
-      this.searchKeyWords = '';
-      this.searchTitle = '';
-      this.searchTips = '';
+      this.searchKeyWords = "";
+      this.searchTitle = "";
+      this.searchTips = "";
       this.searchList = [];
     },
     makeSure() {
       if (!this.form.name.trim()) {
-        Toast('请输入姓名');
+        Toast("请输入姓名");
         return false;
       }
       if (!this.form.department.trim()) {
-        Toast('请输入部门');
+        Toast("请输入部门");
         return false;
       }
       if (!this.form.post.trim()) {
-        Toast('请输入职务');
+        Toast("请输入职务");
         return false;
       }
       if (!this.form.maintainer.trim()) {
-        Toast('请选择维护人');
+        Toast("请选择维护人");
         return false;
       }
       if (!this.form.tel.trim()) {
-        Toast('请输入办公电话');
+        Toast("请输入办公电话");
         return false;
       }
       if (!this.form.mobile.trim()) {
-        Toast('请输入移动电话');
+        Toast("请输入移动电话");
         return false;
       }
 
       if (!this.form.address.trim()) {
-        Toast('请输入办公地点');
+        Toast("请输入办公地点");
         return false;
       }
 
       if (
         !/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(this.form.mobile.trim())
       ) {
-        Toast('办公电话有误，请重填');
+        Toast("办公电话有误，请重填");
         return false;
       }
 
       if (!/^1[3456789]\d{9}$/.test(this.form.mobile.trim())) {
-        Toast('移动电话有误，请重填');
+        Toast("移动电话有误，请重填");
         return false;
       }
 
@@ -244,7 +275,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../assets/style/basic.less';
+@import "../../assets/style/basic.less";
 .van-radio--horizontal {
   margin-right: 0.24rem;
 }

@@ -485,13 +485,16 @@ textarea {
 }
 .search-height {
   height: 2.14rem;
-}
-.search-height .search-height-content {
-  position: fixed;
-  z-index: 1;
   width: 100%;
-  height: 2.14rem;
   background: #f8f8f8;
+}
+.search-list {
+  height: calc(100vh - 2.14rem);
+  overflow-y: scroll;
+}
+.page-scroll {
+  height: calc(100vh - 0.44rem);
+  overflow-y: scroll;
 }
 .picker .van-cell__value {
   background: url(../images/Icon/ic_list_arrow_right.png) right center no-repeat;

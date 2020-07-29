@@ -103,7 +103,7 @@
 
     <!-- 选择弹出页面 -->
     <van-popup v-model="isShowSearchPage" position="right" duration=".1" :overlay="false" :style="{ width: '100%' }">
-      <div style="height: 100vh; overflow-y: scroll;">
+      <div style="height: 100vh;">
         <job-type :list="searchPageList" :title="searchTitle" @choose="chooseSearchPage"
           @close="isShowSearchPage = false">
         </job-type>
