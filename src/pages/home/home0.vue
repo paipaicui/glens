@@ -29,12 +29,12 @@ export default {
         ['新建任务', 22300, 11500],
         ['确定任务', 4000, 400],
         ['执行跟', 0, 0],
-        ['招投标', 0, 0]
-      ]
+        ['招投标', 0, 0],
+      ],
     };
   },
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       this.drawPie(this.threeCharts, this.$refs.three, this.opinionData1);
       this.drawPie(this.sixCharts, this.$refs.six, this.opinionData2);
     });
@@ -51,49 +51,49 @@ export default {
           textStyle: {
             color: '#333',
             fontWeight: 'normal',
-            fontSize: 16
-          }
+            fontSize: 16,
+          },
         },
         legend: {},
         tooltip: {},
         dataset: {
-          source: data
+          source: data,
         },
         xAxis: {
           show: Object.keys(data).length > 0,
           type: 'category',
           axisLine: {
             lineStyle: {
-              color: '#E5E5E5'
-            }
+              color: '#E5E5E5',
+            },
           },
           axisLabel: {
             textStyle: {
-              color: '#333'
-            }
+              color: '#333',
+            },
           },
           axisTick: {
-            show: false
-          }
+            show: false,
+          },
         },
         yAxis: {
           show: Object.keys(data).length > 0,
           splitLine: {
-            show: false
+            show: false,
           },
           axisTick: {
-            show: false
+            show: false,
           },
           axisLine: {
             lineStyle: {
-              color: '#E5E5E5'
-            }
+              color: '#E5E5E5',
+            },
           },
           axisLabel: {
             textStyle: {
-              color: '#ccc'
-            }
-          }
+              color: '#ccc',
+            },
+          },
         },
         series: [
           {
@@ -101,35 +101,35 @@ export default {
             barWidth: 20,
             itemStyle: {
               color: '#0F7EE9',
-              barBorderRadius: [2, 2, 0, 0]
+              barBorderRadius: [2, 2, 0, 0],
             },
             label: {
               show: true,
-              position: 'top'
-            }
+              position: 'top',
+            },
           },
           {
             type: 'bar',
             barWidth: 20,
             itemStyle: {
               color: '#F89A24',
-              barBorderRadius: [2, 2, 0, 0]
+              barBorderRadius: [2, 2, 0, 0],
             },
             label: {
               show: true,
-              position: 'top'
-            }
-          }
+              position: 'top',
+            },
+          },
         ],
         grid: {
           width: '303px',
           height: '146px',
           top: '19px',
-          left: '52px'
-        }
+          left: '52px',
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

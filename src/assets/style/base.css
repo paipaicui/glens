@@ -207,7 +207,7 @@ textarea {
 .main-tab .van-tab__text {
   font-size: 12px;
   width: 48px;
-  overflow: auto;
+  overflow: hidden;
   -webkit-line-clamp: unset;
   text-align: center;
   margin-top: 0.15rem;
@@ -324,8 +324,39 @@ textarea {
   background: #0F7EE9;
   border: #0F7EE9;
 }
+.flow-panel {
+  background: #f8f8f8;
+}
+.flow-panel .panel {
+  background: #fff;
+  margin-bottom: 0.1rem;
+  padding-top: 0.16rem;
+}
+.flow-panel .chart-title {
+  padding-left: 0.36rem;
+  font-size: 0.14rem;
+  color: #0F7EE9;
+  background: url(../images/Icon/ic_sales_forecast.png);
+  background-size: 0.16rem 0.16rem;
+  background-repeat: no-repeat;
+  background-position-x: 0.16rem;
+  background-position-y: center;
+  margin: 0 0 0.02rem 0;
+}
+.flow-panel .chart-tips {
+  font-size: 0.13rem;
+  margin: 0rem 0rem 0rem 0.36rem;
+  color: #0F7EE9;
+  opacity: 0.8;
+}
 .font-blue {
   color: #0F7EE9 !important;
+}
+.font24 {
+  font-size: 0.24rem;
+}
+.font16 {
+  font-size: 0.16rem;
 }
 .font-red {
   color: #FF5252 !important;
@@ -821,4 +852,34 @@ textarea {
   color: #ee0a24;
   text-align: center;
   font-size: 12px;
+}
+.van-divider {
+  border-color: #e5e5e5;
+  color: #333;
+  margin: 0 0.24rem;
+  font-weight: bold;
+}
+.title2 {
+  text-align: center;
+  color: #999;
+  margin: 0.04rem 0 0 0;
+}
+.appraise-table-box {
+  margin: 0.16rem 0.12rem 0 0.12rem;
+  padding-bottom: 0.5rem;
+}
+.appraise-table-box table {
+  width: 100%;
+}
+.appraise-table-box table tr th {
+  background: #0F7EE9;
+  color: #fff;
+  font-weight: normal;
+  height: 0.32rem;
+}
+.appraise-table-box table tr td {
+  background: #F8F8F8;
+  color: #999;
+  height: 0.32rem;
+  text-align: center;
 }

@@ -267,6 +267,26 @@ export default new Router({
       component: () =>
         import( /* webpackChunkName: "appraise" */ "../pages/report/appraise.vue"),
     },
+    {
+      path: '/report/report',
+      meta: {
+        title: "营销工作报表",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "report" */ "../pages/report/report.vue"),
+    },
+    {
+      path: '/report/sale',
+      meta: {
+        title: "销售任务",
+        keepAlive: false,
+        index: 0
+      },
+      component: () =>
+        import( /* webpackChunkName: "sale" */ "../pages/report/sale.vue"),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
 

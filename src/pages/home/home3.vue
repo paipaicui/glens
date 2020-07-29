@@ -21,17 +21,18 @@
                 <span class="font9">沟通是由：</span>
                 <span class="font6">{{ item.content }}</span>
               </p>
+              <van-row>
+                <van-col span="12">
+                  <span class="font9">沟通对象：</span>
+                  <span class="font6">{{ item.name }}</span>
+                </van-col>
+                <van-col span="12" class="text-right">
+                  <span class="state">拜访/接待</span>
+                  <span class="timer">07-01 13:24</span>
+                </van-col>
+              </van-row>
             </router-link>
-            <van-row>
-              <van-col span="12">
-                <span class="font9">沟通对象：</span>
-                <span class="font6">{{ item.name }}</span>
-              </van-col>
-              <van-col span="12" class="text-right">
-                <span class="state">拜访/接待</span>
-                <span class="timer">07-01 13:24</span>
-              </van-col>
-            </van-row>
+
           </li>
         </ul>
         <p class="text-center" v-if="dropUp">
