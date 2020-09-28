@@ -886,3 +886,14 @@ textarea {
   height: 0.32rem;
   text-align: center;
 }
+.van-cell--clickable .van-cell__title {
+  flex: 1;
+}
+.van-cell--clickable .van-cell__value {
+  flex: 2.2;
+  text-align: left;
+  color: #666;
+}
+.van-cell--clickable .van-cell__right-icon {
+  color: #ccc;
+}
