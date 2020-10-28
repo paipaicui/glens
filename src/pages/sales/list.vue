@@ -202,7 +202,8 @@ export default {
     pulldown() {
       let _self = this;
       if (!this.isOver) {
-        let scrollTop = document.documentElement.scrollTop;
+        let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
         let scrollHeight = document.body.scrollHeight;
         let clientHeight = document.documentElement.clientHeight;
         if (

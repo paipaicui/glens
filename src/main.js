@@ -6,10 +6,12 @@ import router from './router'
 import Vant from 'vant';
 import less from 'less'
 import store from './store'
+import Vconsole from 'vconsole'
 require('./mock');
 Vue.use(less)
 Vue.use(Vant);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.prototype.$vConsole = new Vconsole()
 
 import './assets/js/screen.js'
 
